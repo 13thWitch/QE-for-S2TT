@@ -2,3 +2,5 @@
 datasets/
 .idea/
 funngames/
+.updatedVenv/
+__pycache__/

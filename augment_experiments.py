@@ -1,5 +1,5 @@
 from datasets import load_dataset
-from augment import SpecAugment
+from augment_notfa import SpecAugment
 import librosa
 import matplotlib.pyplot as plt
 import numpy as np
@@ -26,6 +26,6 @@ apply = SpecAugment(mel_spectrogram, policy='LB')
 # mask frequency
 freq_masked = apply.freq_mask()
 plt.figure(figsize=(14, 6))
-librosa.display.specshow(librosa.power_to_db(freq_masked, ref=np.max), x_axis='time', y_axis='mel', fmax=8000)
-
-plt.savefig('freq_mask_spec.png')
+# librosa.display.specshow(librosa.power_to_db(freq_masked, ref=np.max), x_axis='time', y_axis='mel', fmax=8000)
+librosa.display.specshow(librosa.power_to_db(freq_masked[:,:], ref=np.max), x_axis='time', y_axis='mel', fmax=8000)
+plt.savefig('test.png')

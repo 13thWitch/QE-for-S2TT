@@ -33,6 +33,7 @@ freq_masked = apply.freq_mask()
 
 # convert back to audio signal
 # This is unavoidably lossy and introduces some noise/metallic sound. Minimal at about 2048 n_fft and 128 hop_length
+# Apparently, larger n_fft and smaller hop_length values are better for time precision (needed for speech recognition)
 perturbed_audio = librosa.feature.inverse.mel_to_audio(freq_masked, sr=sampling_rate, n_fft=2048, hop_length=128)
 # sf.write('perturbed_audio.wav', perturbed_audio[:math.floor(len(perturbed_audio)/3)], sampling_rate)
 sf.write('perturbed_audio.wav', perturbed_audio, sampling_rate)

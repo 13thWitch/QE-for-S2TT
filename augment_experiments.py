@@ -20,7 +20,9 @@ sampling_rate = audio_sample["sampling_rate"]
 sf.write('unperturbed_audio_file.wav', waveform, sampling_rate)
 
 # Extract Mel Spectrogram Features from the audio file
-mel_spectrogram = librosa.feature.melspectrogram(y=waveform, sr=sampling_rate, n_mels=256, hop_length=128, fmax=8000)
+print(f'SampleRate: {sampling_rate}')
+mel_spectrogram = librosa.feature.melspectrogram(y=waveform, sr=sampling_rate, n_mels=80, hop_length=256, fmax=8000)
+print(f'Mel shape: {mel_spectrogram.shape}')
 plt.figure(figsize=(14, 6))
 lib_return = librosa.display.specshow(librosa.power_to_db(mel_spectrogram, ref=np.max), x_axis='time', y_axis='mel', fmax=8000) # Base
 
@@ -31,10 +33,15 @@ apply = SpecAugment(mel_spectrogram, policy='LB')
 # mask frequency
 freq_masked = apply.freq_mask()
 
+print(freq_masked.shape)
+# save the masked mel spectrogram
+with open('freq_masked_mel_transposed.npy', 'wb') as f:
+    np.save(f, freq_masked.T)
+
 # convert back to audio signal
 # This is unavoidably lossy and introduces some noise/metallic sound. Minimal at about 2048 n_fft and 128 hop_length
 # Apparently, larger n_fft and smaller hop_length values are better for time precision (needed for speech recognition)
-perturbed_audio = librosa.feature.inverse.mel_to_audio(freq_masked, sr=sampling_rate, n_fft=2048, hop_length=128)
+perturbed_audio = librosa.feature.inverse.mel_to_audio(freq_masked, sr=sampling_rate, n_fft=1024, hop_length=256)
 # sf.write('perturbed_audio.wav', perturbed_audio[:math.floor(len(perturbed_audio)/3)], sampling_rate)
 sf.write('perturbed_audio.wav', perturbed_audio, sampling_rate)
 

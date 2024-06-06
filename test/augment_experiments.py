@@ -9,18 +9,23 @@ import os
 
 path = os.path.dirname(os.path.realpath(__file__))
 
+waveform, sampling_rate= sf.read('../datasets/pt/clips/common_voice_pt_19273358.mp3')
+
+"""
 ds = load_dataset("covost2", "pt_en", data_dir="./datasets/pt", split="test", trust_remote_code=True)
 
 # Select an audio file and read it:
 audio_sample = ds[4]["audio"]
 waveform = audio_sample["array"]
 sampling_rate = audio_sample["sampling_rate"]
-
+"""
 # Save the audio file
 sf.write('unperturbed_audio_file.wav', waveform, sampling_rate)
 
 # Extract Mel Spectrogram Features from the audio file
-mel_spectrogram = librosa.feature.melspectrogram(y=waveform, sr=sampling_rate, n_mels=256, hop_length=128, fmax=8000)
+print(f'SampleRate: {sampling_rate}')
+mel_spectrogram = librosa.feature.melspectrogram(y=waveform, sr=sampling_rate, n_mels=80, hop_length=128, fmax=8000)
+print(f'Mel shape: {mel_spectrogram.shape}')
 plt.figure(figsize=(14, 6))
 lib_return = librosa.display.specshow(librosa.power_to_db(mel_spectrogram, ref=np.max), x_axis='time', y_axis='mel', fmax=8000) # Base
 
@@ -30,6 +35,11 @@ apply = SpecAugment(mel_spectrogram, policy='LB')
 
 # mask frequency
 freq_masked = apply.freq_mask()
+
+print(freq_masked.shape)
+# save the masked mel spectrogram
+with open('freq_masked_mel.npy', 'wb') as f:
+    np.save(f, freq_masked)
 
 # convert back to audio signal
 # This is unavoidably lossy and introduces some noise/metallic sound. Minimal at about 2048 n_fft and 128 hop_length

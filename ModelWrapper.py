@@ -102,7 +102,6 @@ class STModel:
         @param audio_samples: List of audio samples to perform inference on
         @param sample_rate: Sample rate of the audio samples
         """
-        print(f'Audio at infer contains {type(audio_samples[0][0])}s')
         inferenceMethod = self.navigation[self.model_key]["infer"]
         results = []
         for sample in audio_samples:

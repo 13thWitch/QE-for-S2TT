@@ -95,7 +95,6 @@ class Perturbator:
             freqs = np.fft.fftfreq(len(audio_fft), 1/sample_rate)
             # Design the Filter - Zero out components not within the band-pass range
             band_pass_mask = (freqs > lower) & (freqs < upper)
-            np.savetxt(f"filter_({lower}_{upper})_pass.txt", band_pass_mask, fmt='%d')
             # Apply the mask to the FFT output
             filtered_fft_pass = audio_fft * band_pass_mask
             # Inverse Fourier Transform to convert back to the time domain
@@ -108,7 +107,6 @@ class Perturbator:
             freqs = np.fft.fftfreq(len(audio_fft), 1/sample_rate)
             # Design the Filter - Zero out components within the band-stop range
             band_stop_mask = ~((freqs > lower) & (freqs < upper))
-            np.savetxt(f"filter_({lower}_{upper})_stop.txt", band_stop_mask, fmt='%d')
             # Apply the mask to the FFT output
             filtered_fft_stop = audio_fft * band_stop_mask
             # Inverse Fourier Transform to convert back to the time domain

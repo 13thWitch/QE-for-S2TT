@@ -52,8 +52,6 @@ def S2TT_inference_test():
     args = parser.parse_args()
     load_STModel(args.model, target_language=args.target_lang, source_language=args.source_lang)
     audio, sampling_rate = load_audio(args.audio)
-    print(f'Audio is {type(audio)}')
-    print(f'Audio after loading contains {type(audio[0])}s')
     print(model.infer([audio], sampling_rate))
     print("Test successful")
 

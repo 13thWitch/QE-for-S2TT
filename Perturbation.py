@@ -122,8 +122,16 @@ class Perturbator:
         @param transcription[optional]: string audio's transcribed speech
         @returns a dictionary of perturbation types and respective resulting audio
         """
-        # Maybe instead of arr return dict with keys as pert method description for easier eval
         perturbations = dict()
-        for perturbation_strategy in self.instruction.keys():
-            perturbations[perturbation_strategy] = self.instruction[perturbation_strategy]["method"](audio, sample_rate)
-        return perturbations
+        for perturbation_strategy, specification in self.instruction.items():
+            perturbations[perturbation_strategy] = specification["method"](audio, sample_rate)
+        # return perturbations
+        return flatten_dict(perturbations)
+    
+def flatten_dict(dictionary):
+        """
+        Flatten a dictionary of dictionaries to a single dictionary by concatenating keys along the path.
+        @param dictionary: dictionary of dictionaries
+        @returns a single dictionary
+        """
+        return {f"{super_key}-{k}": v for super_key, subdict in dictionary.items() for k, v in subdict.items()}

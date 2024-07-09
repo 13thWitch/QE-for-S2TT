@@ -39,9 +39,25 @@ def main():
 
     load_STModel(args.model, args.target_lang, args.source_lang)
     audio, sampling_rate = load_audio(args.audio)
+    config = {
+        "random_noise": {
+            "std_ns": [0.001]
+        }, 
+        "resampling": {
+            "target_sample_rates": [8000, 32000]
+        },
+        "speed_warp": {
+            "speeds": [0.5, 1, 2]
+        }, 
+        "frequency_filtering": {
+            "pass_cutoffs": [(100, 1000), (1000, 10000)],
+            "stop_cutoffs": [(100, 1000), (1000, 10000)]
+        }
+    }
 
-    perturbations = Perturbator(audio).get_perturbations()
-    model.infer(perturbations, sampling_rate)
+    perturbations = Perturbator(config=config).get_perturbations(audio=audio, sample_rate=sampling_rate)
+    perturbations["original"] = audio
+    print(model.infer(perturbations, sampling_rate))
 
 def S2TT_inference_test():
     parser = argparse.ArgumentParser()
@@ -82,6 +98,6 @@ def perturbation_test():
 
 
 if __name__ == "__main__":
-    perturbation_test()
+    # perturbation_test()
     # S2TT_inference_test()
-    # main()
+    main()

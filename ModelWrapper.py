@@ -101,19 +101,21 @@ class STModel:
         Perform inference on the given audio samples using instance model.
         @param audio_samples: List of audio samples to perform inference on
         @param sample_rate: Sample rate of the audio samples
+        @return dictionary of audio tags and the corresponding model predictions 
         """
         inferenceMethod = self.navigation[self.model_key]["infer"]
-        results = []
-        for sample in audio_samples:
-            results.append(inferenceMethod(sample, sample_rate))
+        results = dict()
+        for tag, sample in audio_samples.items():
+            results[tag] = inferenceMethod(sample, sample_rate)
         return results
 
     def whisper_infer(self, audio, sample_rate=None):
         """
-        Perform whisper inference on single audio sample. Passes addittional Arguments directly to whisper transcribe.
+        Perform whisper inference on single audio sample to specified target language. Passes addittional Arguments directly to whisper transcribe.
         TODO: on storage/performance problems bind fp16 to cuda device type (switches to fp16 on gpu, fp32 on cpu)
         @param audio: Audio sample to perform inference on
         @param sample_rate: Sample rate of the audio sample
+        @return: string of textual model prediction based on the audio sample
         """
         whisper_sample_rate = 16000
         if sample_rate != whisper_sample_rate:

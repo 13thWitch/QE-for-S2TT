@@ -1,4 +1,5 @@
 from sacrebleu.metrics import BLEU, CHRF, TER
+from comet import load_from_checkpoint, download_model
 
 class QEHead:
     def __init__(self, weights):
@@ -62,17 +63,7 @@ class QEHead:
         used_weights = [self.weights[tag] for tag in prediction_tags if tag in self.weights]
         num_unweighted = len(prediction_tags) - len(used_weights)
         max_score = (sum(used_weights) + num_unweighted) / (len(used_weights) + num_unweighted)
-        return (score / max_score)
-    
-def comet(transcription, translation, reference):
-    """
-    Calculate the COMET score between two sentences.
-    @param transcription: Source language textual transcription
-    @param translation: Target language generated translation
-    @param reference: Target language reference translation
-    @return: COMET score between the two sentences
-    """
-    return 0.5
+        return (score / max_score)   
 
 def bleu(hypothesis, references):
     """
@@ -104,3 +95,25 @@ def ter(hypothesis, references):
     """
     ter = TER()
     return ter.sentence_score(hypothesis=hypothesis, references=references).score
+
+model = None
+model_path = None
+
+def comet(transcription, translation, reference):
+    """
+    Calculate the COMET score between two sentences.
+    @param transcription: Source language textual transcription
+    @param translation: Target language generated translation
+    @param reference: Target language reference translation
+    @return: COMET score
+    """
+    global model, model_path
+    if model is None:
+        model_path = download_model("Unbabel/wmt22-comet-da")
+        model = load_from_checkpoint(model_path)
+    data = [{
+        "src": transcription,
+        "mt": translation,
+        "ref": reference
+    }]
+    return model.predict(data).system_score

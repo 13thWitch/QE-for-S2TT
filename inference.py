@@ -1,5 +1,6 @@
 from ModelWrapper import STModel
 from Perturbation import Perturbator
+from QEHead import QEHead
 import soundfile as sf
 import argparse
 import os
@@ -96,8 +97,20 @@ def perturbation_test():
         sf.write(f"perturbator_filter_{filter_spec}.wav", filtered_audio, samplerate=sampling_rate)
     print("Test successful")
 
+def qe_test():
+    head = QEHead(weights={})
+    predictions = {
+        "original": "This is a test",
+        "model2": "That is a test",
+        "model3": "This is the test",
+        "model4": "That is the test",
+        "model5": "That's a test"
+    }
+    print(f'Score: {head.get_QE_score(predictions, metric="ter")}')
+
 
 if __name__ == "__main__":
     # perturbation_test()
     # S2TT_inference_test()
-    main()
+    qe_test()
+    # main()

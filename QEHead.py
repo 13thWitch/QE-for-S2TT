@@ -1,26 +1,35 @@
+from sacrebleu.metrics import BLEU, CHRF, TER
+
 class QEHead:
     def __init__(self, weights):
         self.weights = weights
         self.metrics = {
-            "comet": lambda x: comet(x),
-            "bleu": lambda x: bleu(x)
+            # "comet": lambda x, y, z: comet(x, y, z),
+            "bleu": lambda x, y: bleu(x, y), 
+            "chrf": lambda x, y: chrf(x, y),
+            "ter": lambda x, y: ter(x, y),
         }
 
-    def get_QE_score(self, predictions, metric="COMET"):
+    def get_QE_score(self, predictions, metric="bleu", interpret_as_corpus=False):
         """
         Calculate the QE score of the given predictions using the given metric.
         @param predictions: List of predictions to compare
         @param metric: Metric to use for QE calculation, default is COMET
-        @return: QE score of the predictions
+        @return: QE score of the predictions, values 0 - 100
         """
         original = predictions["original"]
         del predictions["original"]
+
+        # If the predictions are to be interpreted as a corpus, use all predictions as reference text
+        if interpret_as_corpus:
+            return self.metrics[metric.lower()](hypothesis=original, references=predictions.values())
+
         deviations = self.get_deviations(predictions, original, metric)
         raw_score = self.weighted_average(deviations)
-        num_unweighted = len(deviations) - len(self.weights)
-        return self.normalize(raw_score, offset=num_unweighted)
 
-    def get_deviations(self, predictions, original, metric="COMET"):
+        return self.normalize(raw_score, deviations.keys())
+
+    def get_deviations(self, predictions, original, metric="bleu"):
         """
         Calculate each predictions deviation from the original prediction using the given metric.
         @param predictions: List of predictions to compare
@@ -31,7 +40,7 @@ class QEHead:
         metric = self.metrics[metric.lower()]
         deviations = dict()
         for tag, prediction in predictions.items():
-            deviations[tag] = metric(prediction, original)
+            deviations[tag] = metric(original, [prediction])
         return deviations
     
     def weighted_average(self, scores):
@@ -40,36 +49,58 @@ class QEHead:
         @param scores: dict of tags and their qualscores to aggregate
         @return: weighted aggregated deviations
         """
-        result = 0
-        for tag, score in scores.items():
-            weight = self.weights[tag] if tag in self.weights else 1
-            result += score * weight 
-        return result / len(scores)
+        weighted_scores = [value * self.weights[key] if key in self.weights else value for key, value in scores.items()]
+        return sum(weighted_scores) / len(weighted_scores)
     
-    def normalize(self, score, offset=0):
+    def normalize(self, score, prediction_tags):
         """
-        Normalize the given score to be between 0 and 1.
+        Normalize the given score to be between 0 and 100.
         @param score: float raw score
-        @param offset: int count of unweighted scores
+        @param prediction_tags: List of tags used in the prediction
         @return: float normalized score
         """
-        max_score = (sum(self.weights.values()) + offset) / (len(self.weights.values()) + offset)
-        return score / max_score
+        used_weights = [self.weights[tag] for tag in prediction_tags if tag in self.weights]
+        num_unweighted = len(prediction_tags) - len(used_weights)
+        max_score = (sum(used_weights) + num_unweighted) / (len(used_weights) + num_unweighted)
+        return (score / max_score)
     
-def comet(sentence_1, sentence_2):
+def comet(transcription, translation, reference):
     """
     Calculate the COMET score between two sentences.
-    @param sentence_1: First sentence to compare
-    @param sentence_2: Second sentence to compare
+    @param transcription: Source language textual transcription
+    @param translation: Target language generated translation
+    @param reference: Target language reference translation
     @return: COMET score between the two sentences
     """
     return 0.5
 
-def bleu(sentence_1, sentence_2):
+def bleu(hypothesis, references):
     """
     Calculate the BLEU score between two sentences.
-    @param sentence_1: First sentence to compare
-    @param sentence_2: Second sentence to compare
+    @param hypothesis: First sentence to compare
+    @param reference: Second sentence to compare, reference text
     @return: BLEU score between the two sentences
     """
-    return 0.5
+    bleu = BLEU()
+    bleu.effective_order = True
+    return bleu.sentence_score(hypothesis=hypothesis, references=references).score
+
+def chrf(hypothesis, references):
+    """
+    Calculate the CHRF score between two sentences.
+    @param hypothesis: First sentence to compare
+    @param references: List of reference sentences
+    @return: CHRF score between the two sentences
+    """
+    chrf = CHRF()
+    return chrf.sentence_score(hypothesis=hypothesis, references=references).score
+
+def ter(hypothesis, references):
+    """
+    Calculate the TER between two sentences.
+    @param hypothesis: First sentence to compare
+    @param references: List of reference sentences
+    @return: TER score between the two sentences
+    """
+    ter = TER()
+    return ter.sentence_score(hypothesis=hypothesis, references=references).score

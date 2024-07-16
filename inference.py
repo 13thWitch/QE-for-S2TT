@@ -112,9 +112,9 @@ def perturbation_test():
             "stop_cutoffs": [(100, 1000), (1000, 10000)]
         }
     })
-    result = perturbator.frequency_filtering(audio=audio, sample_rate=sampling_rate)
-    for filter_spec, filtered_audio in result.items():
-        sf.write(f"perturbator_filter_{filter_spec}.wav", filtered_audio, samplerate=sampling_rate)
+    result = perturbator.get_perturbations(audio=audio, sample_rate=sampling_rate, transcription="Somos grandes fans de nosso clubo de futebol.")
+    for strategy, perturbed_audio in result.items():
+        sf.write(f"perturbator_{strategy}.wav", perturbed_audio, samplerate=sampling_rate)
     print("Test successful")
 
 def qe_test():

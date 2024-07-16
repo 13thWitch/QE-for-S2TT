@@ -96,8 +96,8 @@ def ter(hypothesis, references):
     ter = TER()
     return ter.sentence_score(hypothesis=hypothesis, references=references).score
 
-model = None
-model_path = None
+comet_model = None
+comet_path = None
 
 def comet(transcription, translation, reference):
     """
@@ -107,13 +107,13 @@ def comet(transcription, translation, reference):
     @param reference: Target language reference translation
     @return: COMET score
     """
-    global model, model_path
-    if model is None:
-        model_path = download_model("Unbabel/wmt22-comet-da")
-        model = load_from_checkpoint(model_path)
+    global comet_model, comet_path
+    if comet_model is None:
+        comet_path = download_model("Unbabel/wmt22-comet-da")
+        comet_model = load_from_checkpoint(comet_path)
     data = [{
         "src": transcription,
         "mt": translation,
         "ref": reference
     }]
-    return model.predict(data).system_score
+    return comet_model.predict(data).system_score

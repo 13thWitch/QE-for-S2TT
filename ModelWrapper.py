@@ -144,18 +144,16 @@ class STModel:
         """
         Perform Hugging Face inference on single audio sample. Passes addittional Arguments directly to model.generate.
         """
-        # Hugging Face inference on audio
         # TODO: find agnostic variant for AutoLoading, if necessary separate into Language head and non-language head (seamless). How does AutoModel decide which model to load?
+        # preprocess audio
+        working_audio = resampy.resample(audio, sample_rate, self.model.config.sampling_rate)
+        # feed to model
         audio_inputs = self.processor(
-            audio=audio, sampling_rate=sample_rate, return_tensors='pt'
+            audios=working_audio, sampling_rate=self.model.config.sampling_rate, return_tensors="pt"
         )
-        output_tokens = self.model.generate(audio_inputs.input_features,
-            **audio_inputs,
-            tgt_lang=self.target_language,
-            **self.additional_args,
-        )
+        output_tokens = self.model.generate(**audio_inputs, tgt_lang=self.target_language, generate_speech=False, **self.additional_args)
         translated_text_from_audio = self.processor.decode(
-            output_tokens, skip_special_tokens=True
+            output_tokens[0].tolist()[0], skip_special_tokens=True
         )
         return translated_text_from_audio
     

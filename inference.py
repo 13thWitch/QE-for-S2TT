@@ -3,6 +3,7 @@ from Perturbation import Perturbator
 from QEHead import QEHead
 import soundfile as sf
 import argparse
+import json
 import os
 
 path = os.path.dirname(os.path.realpath(__file__))
@@ -18,6 +19,18 @@ def load_audio(audio_path):
     audio, sample_rate = sf.read(audio_path)
     print(f"Loaded audio from {audio_path} with sample rate {sample_rate} Hz")
     return audio, sample_rate
+
+def document(result, reference_QE=None, run_data={}):
+    """
+    Save the run information, including result (and expected result if available) to a json file.
+    """
+    cummulated_run_info = run_data
+    cummulated_run_info["result"] = result
+    if reference_QE is not None:
+        cummulated_run_info["reference"] = reference_QE
+    
+    with open("documentation.json", "w", encoding="utf-8") as f:
+        json.dump(cummulated_run_info, f, indent=4, ensure_ascii=False)
 
 
 def main():

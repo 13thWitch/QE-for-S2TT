@@ -8,6 +8,8 @@ import os
 
 path = os.path.dirname(os.path.realpath(__file__))
 
+# TODO: make this an interface and implement for custom models, including whisper and huggingface
+
 class STModel:
 
     def __init__(
@@ -30,6 +32,9 @@ class STModel:
         self.model_key = model_key
         self.source_language = source_language
         self.target_language = target_language
+        # TODO: consider language code mismatch handling
+        # self.source_language = language_code_conversion[source_language][model_key]
+        # self.target_language = language_code_conversion[target_language][model_key]
         self.model = None
         self.proccessor = None
         self.config = dict()

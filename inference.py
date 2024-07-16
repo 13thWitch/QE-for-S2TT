@@ -26,6 +26,7 @@ def main():
     parser.add_argument("--audio", type=str, required=True)
     parser.add_argument("--target_lang", type=str, default="en")
     parser.add_argument("--source_lang", type=str, default="en")
+    parser.add_argument("--transcript", type=str, default="")
     args = parser.parse_args()
 
     """
@@ -40,6 +41,7 @@ def main():
 
     load_STModel(args.model, args.target_lang, args.source_lang)
     audio, sampling_rate = load_audio(args.audio)
+
     config = {
         "random_noise": {
             "std_ns": [0.001]
@@ -55,10 +57,15 @@ def main():
             "stop_cutoffs": [(100, 1000), (1000, 10000)]
         }
     }
-
-    perturbations = Perturbator(config=config).get_perturbations(audio=audio, sample_rate=sampling_rate)
+    perturbations = Perturbator(config=config).get_perturbations(audio=audio, sample_rate=sampling_rate, transcription=args.transcript)
     perturbations["original"] = audio
-    print(model.infer(perturbations, sampling_rate))
+    predictions = model.infer(perturbations, sampling_rate)
+    # TODO: add weights
+    weights = {strat: 1 for strat in predictions.keys()}
+    evaluator = QEHead(weights)
+    score = evaluator.get_QE_score(predictions=predictions, metric="bleu", interpret_as_corpus=True)
+    document(result=score, reference_QE=None, run_data={"config": config, "weights": weights, "used_transcription": bool(args.transcript)})
+    print(f"Quality Estimation: {score}")
 
 def S2TT_inference_test():
     parser = argparse.ArgumentParser()
@@ -112,5 +119,5 @@ def qe_test():
 if __name__ == "__main__":
     # perturbation_test()
     # S2TT_inference_test()
-    qe_test()
-    # main()
+    # qe_test()
+    main()

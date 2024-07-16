@@ -114,19 +114,50 @@ class Perturbator:
             
         return result
 
-    def get_perturbations(self, audio, sample_rate, transcription=""):
+    def get_perturbations(self, audio, sample_rate, transcription="", combined=False):
         """
         Produce perturbations of given audio based on instance-wide instruction set. 
         @param audio: numpy ndarray of audio
         @param sample_rate: int given audio's sample rate
         @param transcription[optional]: string audio's transcribed speech
-        @returns a dictionary of perturbation types and respective resulting audio
+        @param combined[optional]: boolean indicating whether to use transcription as well as unsegmented perturbations
+        @returns a dictionary of perturbation types and respective resulting audio. If transcription is used, depending on value of combined parameter, the dict contains only or additionally includes segmented perturbations.
         """
+        if transcription:
+            segmented_perturbations = self.use_transcription(audio, sample_rate, transcription)
+            if not combined:
+                return segmented_perturbations
         perturbations = dict()
         for perturbation_strategy, specification in self.instruction.items():
             perturbations[perturbation_strategy] = specification["method"](audio, sample_rate)
         # return perturbations
+        if transcription:
+            return segmented_perturbations.update(flatten_dict(perturbations))
         return flatten_dict(perturbations)
+    
+    def use_transcription(self, audio, sample_rate, transcription):
+        """
+        Segment audio based on transcription and apply perturbations to each segment.
+        @param audio: numpy ndarray of audio
+        @param sample_rate: int given audio's sample rate
+        @param transcription: string audio's transcribed speech
+        @returns a dictionary of perturbation types and respective resulting audio. Keys are formatted as "seg-{segment_number}_{perturbation_strategy}"
+        """
+        # TODO: allocate segment size based on word length/vowel count. See nltk maybe for tokenization, especially ja and zh
+        perturbations = dict()
+        num_words = len(transcription.split())
+        segment_length = len(audio) // num_words
+        for i in range(num_words):
+            segment = audio[i*segment_length:(i+1)*segment_length]
+            for specification in self.instruction.values():
+                # apply perturbation strategy to segment, recieve dict of different variants
+                perturbed_segments = specification["method"](segment, sample_rate)
+                for perturbation, perturbed_segment in perturbed_segments.items():
+                    # for each perturb. param. variant, reattach to audio and store in dict
+                    new_audio = np.concatenate([audio[:i*segment_length], perturbed_segment, audio[(i+1)*segment_length:]])
+                    perturbations[f"seg-{i+1}_{perturbation}"] = new_audio
+        
+        return perturbations
     
 def flatten_dict(dictionary):
         """

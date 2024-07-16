@@ -2,6 +2,8 @@ import resampy
 import math
 import numpy as np
 from scipy.fft import fft, ifft
+from pydub.silence import detect_leading_silence
+from pydub import AudioSegment
 
 class Perturbator:
 
@@ -123,6 +125,7 @@ class Perturbator:
         @param combined[optional]: boolean indicating whether to use transcription as well as unsegmented perturbations
         @returns a dictionary of perturbation types and respective resulting audio. If transcription is used, depending on value of combined parameter, the dict contains only or additionally includes segmented perturbations.
         """
+        audio = trim_silence(audio, sample_rate)
         if transcription:
             segmented_perturbations = self.use_transcription(audio, sample_rate, transcription)
             if not combined:
@@ -166,3 +169,17 @@ def flatten_dict(dictionary):
         @returns a single dictionary
         """
         return {f"{super_key}-{k}": v for super_key, subdict in dictionary.items() for k, v in subdict.items()}
+
+def trim_silence(audio, sr):
+    """
+    Trim silence from the beginning and end of audio.
+    @param audio: numpy ndarray of audio
+    @returns trimmed audio
+    # TODO: potential time complexity improvement here. convert to int16 with 32767, then back to float32.
+    """
+    array = np.int32(audio * 2147483647)
+    audio_segment = AudioSegment(array.tobytes(), frame_rate=sr, sample_width=array.dtype.itemsize, channels=1)
+    trim_leading_silence = lambda x: x[detect_leading_silence(x) :]
+    trim_trailing_silence = lambda x: trim_leading_silence(x.reverse()).reverse()
+    strip_silence = lambda x: trim_trailing_silence(trim_leading_silence(x))
+    return np.float32(np.array(strip_silence(audio_segment).get_array_of_samples()) / 2147483647)

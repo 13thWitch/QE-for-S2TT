@@ -76,7 +76,7 @@ def main():
     # TODO: add weights
     weights = {strat: 1 for strat in predictions.keys()}
     evaluator = QEHead(weights)
-    score = evaluator.get_QE_score(predictions=predictions, metric="bleu", interpret_as_corpus=True)
+    score = evaluator.get_QE_score(predictions=predictions, metric="bleu", interpret_as_corpus=False)
     document(result=score, reference_QE=None, run_data={"config": config, "weights": weights, "used_transcription": bool(args.transcript)})
     print(f"Quality Estimation: {score}")
 

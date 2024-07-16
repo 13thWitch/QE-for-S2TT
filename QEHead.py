@@ -14,7 +14,7 @@ class QEHead:
     def get_QE_score(self, predictions, metric="bleu", interpret_as_corpus=False):
         """
         Calculate the QE score of the given predictions using the given metric.
-        @param predictions: List of predictions to compare
+        @param predictions: Dict of perturbation strategies and corresponding predictions to compare
         @param metric: Metric to use for QE calculation, default is COMET
         @return: QE score of the predictions, values 0 - 100
         """
@@ -23,7 +23,7 @@ class QEHead:
 
         # If the predictions are to be interpreted as a corpus, use all predictions as reference text
         if interpret_as_corpus:
-            return self.metrics[metric.lower()](hypothesis=original, references=predictions.values())
+            return self.metrics[metric.lower()](original, list(predictions.values()))
 
         deviations = self.get_deviations(predictions, original, metric)
         raw_score = self.weighted_average(deviations)
@@ -33,7 +33,7 @@ class QEHead:
     def get_deviations(self, predictions, original, metric="bleu"):
         """
         Calculate each predictions deviation from the original prediction using the given metric.
-        @param predictions: List of predictions to compare
+        @param predictions: Dict of tagged predictions to compare
         @param original: Original prediction to compare to
         @param metric: Metric to use for deviation calculation, default is COMET
         @return: dict of deviations for each prediction
@@ -62,7 +62,7 @@ class QEHead:
         """
         used_weights = [self.weights[tag] for tag in prediction_tags if tag in self.weights]
         num_unweighted = len(prediction_tags) - len(used_weights)
-        max_score = (sum(used_weights) + num_unweighted) / (len(used_weights) + num_unweighted)
+        max_score = (sum(used_weights) + num_unweighted) / len(prediction_tags)
         return (score / max_score)   
 
 def bleu(hypothesis, references):
@@ -99,6 +99,7 @@ def ter(hypothesis, references):
 comet_model = None
 comet_path = None
 
+# TODO: call comet as transcription, perturbed translation, original translation
 def comet(transcription, translation, reference):
     """
     Calculate the COMET score between two sentences.

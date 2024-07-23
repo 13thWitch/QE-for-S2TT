@@ -146,7 +146,8 @@ class Perturbator:
         @param transcription: string audio's transcribed speech
         @returns a dictionary of perturbation types and respective resulting audio. Keys are formatted as "seg-{segment_number}_{perturbation_strategy}"
         """
-        # TODO: allocate segment size based on word length/vowel count. See nltk maybe for tokenization, especially ja and zh
+        # TODO: allocate segment size based on word length/vowel count. 
+        # TODO: add character-language support list(u"这是一个句子")
         perturbations = dict()
         num_words = len(transcription.split())
         segment_length = len(audio) // num_words

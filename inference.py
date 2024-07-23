@@ -1,5 +1,6 @@
-from ModelWrapper import STModel
+from Quality_Estimator import QualityEstimator
 from Perturbation import Perturbator
+from ModelWrapper import STModel
 from QEHead import QEHead
 import soundfile as sf
 import argparse
@@ -20,19 +21,6 @@ def load_audio(audio_path):
     print(f"Loaded audio from {audio_path} with sample rate {sample_rate} Hz")
     return audio, sample_rate
 
-def document(result, reference_QE=None, run_data={}):
-    """
-    Save the run information, including result (and expected result if available) to a json file.
-    """
-    cummulated_run_info = run_data
-    cummulated_run_info["result"] = result
-    if reference_QE is not None:
-        cummulated_run_info["reference"] = reference_QE
-    
-    with open("documentation.json", "w", encoding="utf-8") as f:
-        json.dump(cummulated_run_info, f, indent=4, ensure_ascii=False)
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, required=True)
@@ -42,42 +30,9 @@ def main():
     parser.add_argument("--transcript", type=str, default="")
     args = parser.parse_args()
 
-    """
-    TODO: Implement seeding & device selection
-    global device
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed(h.seed)
-        device = torch.device("cuda")
-    else:
-        device = torch.device("cpu")
-    """
-
-    load_STModel(args.model, args.target_lang, args.source_lang)
     audio, sampling_rate = load_audio(args.audio)
-
-    config = {
-        "random_noise": {
-            "std_ns": [0.001]
-        }, 
-        "resampling": {
-            "target_sample_rates": [8000, 32000]
-        },
-        "speed_warp": {
-            "speeds": [0.5, 1, 2]
-        }, 
-        "frequency_filtering": {
-            "pass_cutoffs": [(100, 1000), (1000, 10000)],
-            "stop_cutoffs": [(100, 1000), (1000, 10000)]
-        }
-    }
-    perturbations = Perturbator(config=config).get_perturbations(audio=audio, sample_rate=sampling_rate, transcription=args.transcript)
-    perturbations["original"] = audio
-    predictions = model.infer(perturbations, sampling_rate)
-    # TODO: add weights
-    weights = {strat: 1 for strat in predictions.keys()}
-    evaluator = QEHead(weights)
-    score = evaluator.get_QE_score(predictions=predictions, metric="bleu", interpret_as_corpus=False)
-    document(result=score, reference_QE=None, run_data={"config": config, "weights": weights, "used_transcription": bool(args.transcript)})
+    QE_Model = QualityEstimator(args.model, args.source_lang, args.target_lang)
+    score = QE_Model.estimate_quality(audio, sampling_rate)
     print(f"Quality Estimation: {score}")
 
 def S2TT_inference_test():

@@ -42,11 +42,11 @@ class STModel:
         self.navigation = {
             "whisper": {
                 "load": lambda: self.load_whisper_model(),
-                "infer": lambda audio, sr: self.whisper_infer(audio, sr),
+                "infer": lambda audio, sr, rc: self.whisper_infer(audio, sr, return_confidence=rc),
             },
             "huggingface": {
                 "load": lambda: self.load_huggingface_model(),
-                "infer": lambda audio, sr: self.huggingface_infer(audio, sr),
+                "infer": lambda audio, sr, rc: self.huggingface_infer(audio, sr, return_confidence=rc),
             }
         }
         print(f'Instace for model key {model_key} created.')
@@ -101,25 +101,33 @@ class STModel:
         self.config = AutoConfig.from_pretrained(self.model_key)
 
     # Inference
-    def infer(self, audio_samples, sample_rate=None):
+    def infer(self, audio_samples, sample_rate=None, return_confidence=False):
         """
         Perform inference on the given audio samples using instance model.
         @param audio_samples: List of audio samples to perform inference on
         @param sample_rate: Sample rate of the audio samples
+        @param return_confidence: whether to return the confidence of the model's prediction
         @return dictionary of audio tags and the corresponding model predictions 
         """
         inferenceMethod = self.navigation[self.model_key]["infer"]
         results = dict()
+        if return_confidence:
+            probabilities = {}
+            for tag, sample in audio_samples.items():
+                results[tag], probabilities[tag] = inferenceMethod(sample, sample_rate, return_confidence)
+            return results, probabilities
+        
         for tag, sample in audio_samples.items():
-            results[tag] = inferenceMethod(sample, sample_rate)
+            results[tag] = inferenceMethod(sample, sample_rate, return_confidence)
         return results
 
-    def whisper_infer(self, audio, sample_rate=None):
+    def whisper_infer(self, audio, sample_rate=None, return_confidence=False):
         """
         Perform whisper inference on single audio sample to specified target language. Passes addittional Arguments directly to whisper transcribe.
         TODO: on storage/performance problems bind fp16 to cuda device type (switches to fp16 on gpu, fp32 on cpu)
         @param audio: Audio sample to perform inference on
         @param sample_rate: Sample rate of the audio sample
+        @param return_confidence: whether to return the confidence of the model's prediction
         @return: string of textual model prediction based on the audio sample
         """
         whisper_sample_rate = 16000
@@ -138,11 +146,18 @@ class STModel:
             verbose=False,
             **self.additional_args,
         )
-        return result["text"]
+        if not return_confidence:
+            return result["text"]
+        confidence = np.exp(float(result['segments'][0]['avg_logprob']))
+        return result["text"], confidence
 
-    def huggingface_infer(self, audio, sample_rate=None):
+    def huggingface_infer(self, audio, sample_rate=None, return_confidence=False):
         """
         Perform Hugging Face inference on single audio sample. Passes addittional Arguments directly to model.generate.
+        @param audio: Audio sample to perform inference on
+        @param sample_rate: Sample rate of the audio sample
+        @param return_confidence: whether to return the confidence of the model's prediction
+        @return: string of textual model prediction based on the audio sample
         """
         # TODO: find agnostic variant for AutoLoading, if necessary separate into Language head and non-language head (seamless). How does AutoModel decide which model to load?
         # preprocess audio
@@ -155,7 +170,37 @@ class STModel:
         translated_text_from_audio = self.processor.decode(
             output_tokens[0].tolist()[0], skip_special_tokens=True
         )
-        return translated_text_from_audio
+        if not return_confidence:
+            return translated_text_from_audio
+        return translated_text_from_audio, self.get_prediction_probability(output_tokens)
+    
+    def get_prediction_probability(self, output):
+        """
+        Get the prediction probability of the huggingface model's output.
+        @param output: The output of the model
+        @return: The prediction probability of the output
+        """
+        transition_scores = self.model.compute_transition_scores(
+            output.sequences, output.scores, normalize_logits=True
+        )
+        probabilities = np.exp(transition_scores.sum(axis=1))
+        return probabilities
+    
+    def get_token_probabilities(self, output):
+        """
+        Get the token probabilities of the huggingface model's output.
+        @param output: The output of the model
+        @return: The token probabilities of the model output as dict, keys being the decoded tokens.
+        """
+        transition_scores = self.model.compute_transition_scores(
+            output.sequences, output.scores, normalize_logits=True
+        )
+        generated_tokens = output.sequences[:, :]
+        token_probs = {}
+        for tok, score in zip(generated_tokens[0], transition_scores[0]):
+            decoded_token = f"{self.proccessor.decode(tok):8s}"
+            token_probs[decoded_token] = np.exp(score.numpy())
+        return token_probs
     
 
     def get_attribute(self, name: str) -> Any:

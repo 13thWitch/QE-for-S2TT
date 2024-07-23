@@ -21,13 +21,13 @@ class QEHead:
         @return: QE score of the predictions, values 0 - 100
         """
         original = predictions["original"]
-        del predictions["original"]
+        perturbed_predictions = {key: value for key, value in predictions.items() if key != "original"}
 
         # If the predictions are to be interpreted as a corpus, use all predictions as reference text
         if interpret_as_corpus:
-            return self.metrics[metric.lower()](original, list(predictions.values()))
+            return self.metrics[metric.lower()](original, list(perturbed_predictions.values()))
 
-        deviations = self.get_deviations(predictions, original, metric)
+        deviations = self.get_deviations(perturbed_predictions, original, metric)
         raw_score = self.weighted_average(deviations)
 
         return self.normalize(raw_score, deviations.keys())

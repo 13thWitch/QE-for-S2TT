@@ -45,7 +45,7 @@ class QualityEstimator:
         score = self.QEHead.get_QE_score(predictions=predictions, metric="bleu", interpret_as_corpus=False)
         eval_data = {
             "translation": predictions['original'],
-            "cofidence": likelihoods['original'],
+            "confidence": likelihoods['original'],
         }
         return score, eval_data
     

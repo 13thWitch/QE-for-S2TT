@@ -100,6 +100,8 @@ class STModel:
         self.navigation[self.model_key] = self.navigation["huggingface"]
         self.processor = AutoProcessor.from_pretrained(self.model_key)
         self.model = AutoModel.from_pretrained(self.model_key)
+        if self.device == torch.device("cuda"):
+            self.model.cuda()
         self.config = AutoConfig.from_pretrained(self.model_key)
 
     # Inference
@@ -187,7 +189,7 @@ class STModel:
         transition_scores = self.model.compute_transition_scores(
             output.sequences, output.scores, normalize_logits=True
         )
-        probabilities = np.exp(transition_scores.sum(axis=1))
+        probabilities = np.exp(transition_scores.sum(axis=1).cpu())
         return probabilities
     
     def get_token_probabilities(self, output):

@@ -1,0 +1,163 @@
+Starting job
+IWSLT23_with_files.csv
+Instace for model key facebook/seamless-m4t-v2-large created.
+File 80431_44.wav evaluated. Results: {'result': 58.415775570712, 'comet': 0.5596516728401184, 'confidence': tensor([0.0003])}
+File 81387_118.wav evaluated. Results: {'result': 17.955888904525242, 'comet': 0.5280234217643738, 'confidence': tensor([4.8719e-05])}
+File 91039_40.wav evaluated. Results: {'result': 59.73887852869346, 'comet': 0.8680016994476318, 'confidence': tensor([8.1551e-06])}
+File 91039_29.wav evaluated. Results: {'result': 39.506100098933175, 'comet': 0.8670226335525513, 'confidence': tensor([0.0008])}
+File 70362_13.wav evaluated. Results: {'result': 61.77423376581886, 'comet': 0.9478575587272644, 'confidence': tensor([1.6174e-05])}
+File 86145_14.wav evaluated. Results: {'result': 43.02586207034112, 'comet': 0.8839502334594727, 'confidence': tensor([1.9978e-05])}
+File 81387_123.wav evaluated. Results: {'result': 70.56849162382085, 'comet': 0.8308567404747009, 'confidence': tensor([3.2300e-08])}
+File 84145_46.wav evaluated. Results: {'result': 63.566538987930016, 'comet': 0.9179981350898743, 'confidence': tensor([4.3725e-05])}
+File 81387_59.wav evaluated. Results: {'result': 78.58942553297099, 'comet': 0.8825309872627258, 'confidence': tensor([0.0474])}
+File 78106_3.wav evaluated. Results: {'result': 60.665674928089814, 'comet': 0.8892606496810913, 'confidence': tensor([1.6977e-06])}
+File 64520_43.wav evaluated. Results: {'result': 48.05871106511861, 'comet': 0.5077053904533386, 'confidence': tensor([2.1066e-16])}
+File 82027_7.wav evaluated. Results: {'result': 80.94874724484053, 'comet': 0.9279757738113403, 'confidence': tensor([0.0229])}
+File 80431_72.wav evaluated. Results: {'result': 57.26814066384473, 'comet': 0.7600727677345276, 'confidence': tensor([5.6194e-17])}
+File 87645_59.wav evaluated. Results: {'result': 53.87014659274864, 'comet': 0.986269474029541, 'confidence': tensor([0.0374])}
+File 84818_33.wav evaluated. Results: {'result': 46.626797460600905, 'comet': 0.7622819542884827, 'confidence': tensor([5.0740e-06])}
+File 84818_77.wav evaluated. Results: {'result': 59.34684522301761, 'comet': 0.9177625179290771, 'confidence': tensor([5.0913e-06])}
+File 89208_28.wav evaluated. Results: {'result': 60.52878163305972, 'comet': 0.8697905540466309, 'confidence': tensor([5.4530e-06])}
+File 91039_69.wav evaluated. Results: {'result': 43.930966995972284, 'comet': 0.8998201489448547, 'confidence': tensor([0.0431])}
+File 82791_21.wav evaluated. Results: {'result': 46.93633903224641, 'comet': 0.8223215341567993, 'confidence': tensor([1.2149e-11])}
+File 86145_8.wav evaluated. Results: {'result': 71.78712248377657, 'comet': 0.8807225227355957, 'confidence': tensor([4.6876e-05])}
+File 78705_20.wav evaluated. Results: {'result': 54.3414223922729, 'comet': 0.7995380163192749, 'confidence': tensor([1.2733e-12])}
+File 81336_31.wav evaluated. Results: {'result': 60.22021467544573, 'comet': 0.9151947498321533, 'confidence': tensor([0.0026])}
+File 76213_10.wav evaluated. Results: {'result': 48.1835984615305, 'comet': 0.9441532492637634, 'confidence': tensor([0.0008])}
+File 87645_73.wav evaluated. Results: {'result': 66.72870060521944, 'comet': 0.6221466660499573, 'confidence': tensor([2.3247e-05])}
+File 81212_36.wav evaluated. Results: {'result': 74.69100936839617, 'comet': 0.7803641557693481, 'confidence': tensor([1.1131e-09])}
+File 79874_23.wav evaluated. Results: {'result': 50.97595060529622, 'comet': 0.7460296154022217, 'confidence': tensor([1.7361e-11])}
+File 86145_34.wav evaluated. Results: {'result': 61.93412879884285, 'comet': 0.8803777694702148, 'confidence': tensor([1.0097e-05])}
+File 24424_1.wav evaluated. Results: {'result': 38.73278804049097, 'comet': 0.7042542099952698, 'confidence': tensor([3.1720e-07])}
+File 79305_13.wav evaluated. Results: {'result': 42.76659878723903, 'comet': 0.5798208117485046, 'confidence': tensor([6.1203e-13])}
+File 91039_64.wav evaluated. Results: {'result': 63.44405041249844, 'comet': 0.6646903157234192, 'confidence': tensor([0.0029])}
+File 91371_12.wav evaluated. Results: {'result': 45.310759532480844, 'comet': 0.8173869252204895, 'confidence': tensor([2.0591e-25])}
+File 81212_20.wav evaluated. Results: {'result': 70.03092089011896, 'comet': 0.8778585195541382, 'confidence': tensor([2.1027e-10])}
+File 79874_27.wav evaluated. Results: {'result': 51.777218366134456, 'comet': 0.7486623525619507, 'confidence': tensor([1.4296e-05])}
+File 78705_6.wav evaluated. Results: {'result': 55.43477997216489, 'comet': 0.7441055774688721, 'confidence': tensor([1.2797e-14])}
+File 20086_86.wav evaluated. Results: {'result': 85.62647380272755, 'comet': 0.5704071521759033, 'confidence': tensor([1.0365e-07])}
+File 81387_54.wav evaluated. Results: {'result': 27.31529326628462, 'comet': 0.8572297096252441, 'confidence': tensor([0.0001])}
+File 84818_129.wav evaluated. Results: {'result': 55.36824067604732, 'comet': 0.7180303931236267, 'confidence': tensor([1.0675e-07])}
+File 82092_21.wav evaluated. Results: {'result': 69.10497049074081, 'comet': 0.9203914403915405, 'confidence': tensor([1.2736e-08])}
+File 81160_27.wav evaluated. Results: {'result': 58.41552802471932, 'comet': 0.7691311240196228, 'confidence': tensor([1.0977e-14])}
+File 24425_30.wav evaluated. Results: {'result': 68.26064830486494, 'comet': 0.9322245717048645, 'confidence': tensor([0.0001])}
+File 84818_59.wav evaluated. Results: {'result': 46.94279111719963, 'comet': 0.8428702354431152, 'confidence': tensor([0.0045])}
+File 84818_85.wav evaluated. Results: {'result': 37.780432343398346, 'comet': 0.8727236390113831, 'confidence': tensor([0.0003])}
+File 24423_18.wav evaluated. Results: {'result': 59.901348941972664, 'comet': 0.8958462476730347, 'confidence': tensor([9.3973e-06])}
+File 76213_18.wav evaluated. Results: {'result': 47.65710895122766, 'comet': 0.7251661419868469, 'confidence': tensor([9.8953e-07])}
+File 89208_7.wav evaluated. Results: {'result': 26.274741557463624, 'comet': 0.4932054579257965, 'confidence': tensor([3.0712e-32])}
+File 78106_25.wav evaluated. Results: {'result': 12.209205544018198, 'comet': 0.5615257024765015, 'confidence': tensor([2.9169e-17])}
+File 20086_44.wav evaluated. Results: {'result': 51.47145673207448, 'comet': 0.520819365978241, 'confidence': tensor([0.0416])}
+File 80431_19.wav evaluated. Results: {'result': 57.272740343298395, 'comet': 0.665525496006012, 'confidence': tensor([8.7761e-16])}
+File 84818_11.wav evaluated. Results: {'result': 67.12957079879872, 'comet': 0.9470887780189514, 'confidence': tensor([0.0001])}
+File 84818_135.wav evaluated. Results: {'result': 57.49312007868095, 'comet': 0.8774958252906799, 'confidence': tensor([3.4274e-06])}
+File 20086_100.wav evaluated. Results: {'result': 32.756575931543175, 'comet': 0.8670501112937927, 'confidence': tensor([1.9991e-05])}
+File 79305_22.wav evaluated. Results: {'result': 57.22143940798247, 'comet': 0.7099743485450745, 'confidence': tensor([1.7721e-12])}
+File 76213_29.wav evaluated. Results: {'result': 45.375176565432064, 'comet': 0.6990934014320374, 'confidence': tensor([1.1586e-08])}
+File 80685_35.wav evaluated. Results: {'result': 41.92855069648736, 'comet': 0.8131245374679565, 'confidence': tensor([8.0040e-12])}
+File 87645_42.wav evaluated. Results: {'result': 46.37196104606423, 'comet': 0.7982473373413086, 'confidence': tensor([2.2801e-07])}
+File 76221_32.wav evaluated. Results: {'result': 53.59353907876577, 'comet': 0.9342908263206482, 'confidence': tensor([2.7620e-07])}
+File 78705_18.wav evaluated. Results: {'result': 74.96449595175895, 'comet': 0.7913410067558289, 'confidence': tensor([4.2863e-06])}
+File 80820_36.wav evaluated. Results: {'result': 48.31831815009156, 'comet': 0.7347217202186584, 'confidence': tensor([3.9069e-08])}
+File 80431_11.wav evaluated. Results: {'result': 60.61831847243634, 'comet': 0.5838093161582947, 'confidence': tensor([6.8911e-11])}
+File 82092_26.wav evaluated. Results: {'result': 66.92584070751005, 'comet': 0.8639336228370667, 'confidence': tensor([1.7910e-05])}
+File 91039_57.wav evaluated. Results: {'result': 53.01643288988066, 'comet': 0.9357315301895142, 'confidence': tensor([0.0015])}
+File 24250_1.wav evaluated. Results: {'result': 51.503994593142394, 'comet': 0.8600835204124451, 'confidence': tensor([6.1090e-12])}
+File 81387_29.wav evaluated. Results: {'result': 46.122609143266075, 'comet': 0.6129966974258423, 'confidence': tensor([2.5165e-14])}
+File 70362_2.wav evaluated. Results: {'result': 48.80926063316656, 'comet': 0.8932603001594543, 'confidence': tensor([2.4403e-10])}
+File 81387_21.wav evaluated. Results: {'result': 8.6273541777925, 'comet': 0.5082846283912659, 'confidence': tensor([2.7838e-14])}
+File 64520_60.wav evaluated. Results: {'result': 46.29994711688814, 'comet': 0.4379279911518097, 'confidence': tensor([2.5746e-17])}
+File 78705_18.wav evaluated. Results: {'result': 74.96449595175895, 'comet': 0.7913410067558289, 'confidence': tensor([4.2863e-06])}
+File 81336_5.wav evaluated. Results: {'result': 39.40898648714071, 'comet': 0.7884735465049744, 'confidence': tensor([9.5032e-15])}
+File 86145_14.wav evaluated. Results: {'result': 43.02586207034112, 'comet': 0.8839502334594727, 'confidence': tensor([1.9978e-05])}
+File 80431_19.wav evaluated. Results: {'result': 57.272740343298395, 'comet': 0.665525496006012, 'confidence': tensor([8.7761e-16])}
+File 81387_122.wav evaluated. Results: {'result': 28.330311733241683, 'comet': 0.40651175379753113, 'confidence': tensor([0.0014])}
+File 81387_63.wav evaluated. Results: {'result': 28.261817328610988, 'comet': 0.606182873249054, 'confidence': tensor([2.1999e-08])}
+File 84818_68.wav evaluated. Results: {'result': 21.282276706856173, 'comet': 0.764641284942627, 'confidence': tensor([2.8973e-05])}
+File 81336_3.wav evaluated. Results: {'result': 67.04050965882801, 'comet': 0.8862869739532471, 'confidence': tensor([2.0105e-06])}
+File 76221_49.wav evaluated. Results: {'result': 60.39219031889779, 'comet': 0.8881750702857971, 'confidence': tensor([3.2673e-08])}
+File 81387_19.wav evaluated. Results: {'result': 41.38748442370104, 'comet': 0.8923454880714417, 'confidence': tensor([3.1103e-08])}
+File 89208_17.wav evaluated. Results: {'result': 52.78976041482135, 'comet': 0.7141034007072449, 'confidence': tensor([3.5963e-09])}
+File 24424_14.wav evaluated. Results: {'result': 45.362236960600065, 'comet': 0.6426792144775391, 'confidence': tensor([7.2711e-11])}
+File 71900_34.wav evaluated. Results: {'result': 37.37145817669976, 'comet': 0.41775426268577576, 'confidence': tensor([2.7517e-05])}
+File 83931_23.wav evaluated. Results: {'result': 65.79372919210599, 'comet': 0.8739614486694336, 'confidence': tensor([2.1591e-05])}
+File 81387_68.wav evaluated. Results: {'result': 73.07140647111939, 'comet': 0.9493858218193054, 'confidence': tensor([0.0198])}
+File 24424_19.wav evaluated. Results: {'result': 49.93955395932439, 'comet': 0.8446341753005981, 'confidence': tensor([6.5108e-11])}
+File 68647_11.wav evaluated. Results: {'result': 60.58896415116933, 'comet': 0.926654577255249, 'confidence': tensor([0.0003])}
+File 81336_32.wav evaluated. Results: {'result': 71.8875883986955, 'comet': 0.83111172914505, 'confidence': tensor([2.9445e-05])}
+File 20086_53.wav evaluated. Results: {'result': 65.43329471034153, 'comet': 0.9230772256851196, 'confidence': tensor([7.5821e-08])}
+File 64520_60.wav evaluated. Results: {'result': 44.39736341934974, 'comet': 0.4379279911518097, 'confidence': tensor([2.5746e-17])}
+File 78106_3.wav evaluated. Results: {'result': 60.665674928089814, 'comet': 0.8892606496810913, 'confidence': tensor([1.6977e-06])}
+File 81387_54.wav evaluated. Results: {'result': 25.189122761917893, 'comet': 0.8572297096252441, 'confidence': tensor([0.0001])}
+File 76221_11.wav evaluated. Results: {'result': 49.58224320589419, 'comet': 0.9038304686546326, 'confidence': tensor([0.0007])}
+File 81387_83.wav evaluated. Results: {'result': 1.6567193350618414, 'comet': 0.6218323111534119, 'confidence': tensor([3.9001e-06])}
+File 20086_4.wav evaluated. Results: {'result': 37.805138228587985, 'comet': 0.8134088516235352, 'confidence': tensor([1.9294e-06])}
+File 84818_128.wav evaluated. Results: {'result': 36.61607372707914, 'comet': 0.9560726284980774, 'confidence': tensor([0.0051])}
+File 80820_36.wav evaluated. Results: {'result': 47.42043541956301, 'comet': 0.7347217202186584, 'confidence': tensor([3.9069e-08])}
+File 78705_4.wav evaluated. Results: {'result': 52.5377882494245, 'comet': 0.7150931358337402, 'confidence': tensor([1.3719e-13])}
+File 64520_9.wav evaluated. Results: {'result': 65.74002576875714, 'comet': 0.7748505473136902, 'confidence': tensor([0.0003])}
+File 82027_5.wav evaluated. Results: {'result': 67.92217174294959, 'comet': 0.7905365824699402, 'confidence': tensor([6.0633e-11])}
+File 79874_20.wav evaluated. Results: {'result': 62.32228998727695, 'comet': 0.9110224843025208, 'confidence': tensor([2.2448e-06])}
+File 75498_2.wav evaluated. Results: {'result': 31.527628309943243, 'comet': 0.8650070428848267, 'confidence': tensor([1.2009e-06])}
+File 83931_16.wav evaluated. Results: {'result': 55.95878704913812, 'comet': 0.8854609131813049, 'confidence': tensor([8.6609e-09])}
+File 24424_26.wav evaluated. Results: {'result': 31.777681874703262, 'comet': 0.539730429649353, 'confidence': tensor([3.0052e-08])}
+File 78106_7.wav evaluated. Results: {'result': 34.87149863057692, 'comet': 0.656888484954834, 'confidence': tensor([9.2695e-14])}
+File 81212_8.wav evaluated. Results: {'result': 76.21723448881025, 'comet': 0.8777163624763489, 'confidence': tensor([3.9243e-08])}
+File 84818_136.wav evaluated. Results: {'result': 62.908988148052984, 'comet': 0.9740198254585266, 'confidence': tensor([0.0189])}
+File 71900_44.wav evaluated. Results: {'result': 58.75159886048294, 'comet': 0.8138837814331055, 'confidence': tensor([1.5025e-14])}
+File 87645_72.wav evaluated. Results: {'result': 33.928912188889996, 'comet': 0.8863908052444458, 'confidence': tensor([0.0012])}
+File 75498_28.wav evaluated. Results: {'result': 74.51987012684641, 'comet': 0.8838661909103394, 'confidence': tensor([3.6196e-09])}
+File 64520_11.wav evaluated. Results: {'result': 60.40027064526248, 'comet': 0.6933916211128235, 'confidence': tensor([9.8942e-13])}
+File 80431_23.wav evaluated. Results: {'result': 64.81821472209177, 'comet': 0.49940022826194763, 'confidence': tensor([1.9554e-05])}
+File 23969_3.wav evaluated. Results: {'result': 48.435133240818274, 'comet': 0.4610304832458496, 'confidence': tensor([7.0256e-10])}
+File 81212_9.wav evaluated. Results: {'result': 76.33534143976188, 'comet': 0.8436564803123474, 'confidence': tensor([0.0002])}
+File 24425_19.wav evaluated. Results: {'result': 48.746261883807705, 'comet': 0.87490314245224, 'confidence': tensor([4.6079e-05])}
+File 82791_9.wav evaluated. Results: {'result': 65.5965927364869, 'comet': 0.8835682272911072, 'confidence': tensor([0.0005])}
+File 79874_12.wav evaluated. Results: {'result': 58.07148678310733, 'comet': 0.8819406628608704, 'confidence': tensor([2.4309e-11])}
+File 74478_18.wav evaluated. Results: {'result': 49.11847983559106, 'comet': 0.7250517010688782, 'confidence': tensor([2.3065e-15])}
+File 78705_1.wav evaluated. Results: {'result': 30.137810937992025, 'comet': 0.7358397841453552, 'confidence': tensor([1.6582e-12])}
+File 24425_27.wav evaluated. Results: {'result': 39.104427858755194, 'comet': 0.6751469969749451, 'confidence': tensor([5.4650e-06])}
+File 64520_1.wav evaluated. Results: {'result': 60.00000000000002, 'comet': 0.4301358163356781, 'confidence': tensor([4.7328e-06])}
+File 13588_3.wav evaluated. Results: {'result': 49.1381044596693, 'comet': 0.9155254364013672, 'confidence': tensor([0.0172])}
+File 24425_17.wav evaluated. Results: {'result': 72.62592689392827, 'comet': 0.9098023176193237, 'confidence': tensor([0.0001])}
+File 76221_33.wav evaluated. Results: {'result': 61.598653917352884, 'comet': 0.8381151556968689, 'confidence': tensor([0.0004])}
+File 64520_84.wav evaluated. Results: {'result': 26.581404948992475, 'comet': 0.3305686414241791, 'confidence': tensor([2.0544e-36])}
+File 79305_3.wav evaluated. Results: {'result': 51.144010074346184, 'comet': 0.8352282047271729, 'confidence': tensor([8.2773e-07])}
+File 81387_132.wav evaluated. Results: {'result': 44.51415163385398, 'comet': 0.8124385476112366, 'confidence': tensor([3.7903e-08])}
+File 91039_2.wav evaluated. Results: {'result': 44.124131588630576, 'comet': 0.8326793313026428, 'confidence': tensor([2.7031e-05])}
+File 79305_17.wav evaluated. Results: {'result': 47.626440050840365, 'comet': 0.6142990589141846, 'confidence': tensor([1.7409e-07])}
+File 24424_45.wav evaluated. Results: {'result': 73.20780008758908, 'comet': 0.6607484221458435, 'confidence': tensor([0.0008])}
+File 20086_5.wav evaluated. Results: {'result': 60.962998995424506, 'comet': 0.8329784870147705, 'confidence': tensor([3.0786e-05])}
+File 79305_3.wav evaluated. Results: {'result': 47.75846527378921, 'comet': 0.8352282047271729, 'confidence': tensor([8.2773e-07])}
+File 82791_6.wav evaluated. Results: {'result': 76.69187989221405, 'comet': 0.9510917067527771, 'confidence': tensor([4.7933e-05])}
+File 80820_30.wav evaluated. Results: {'result': 65.51177401198962, 'comet': 0.8987939357757568, 'confidence': tensor([3.4310e-07])}
+File 84818_91.wav evaluated. Results: {'result': 62.884096727415, 'comet': 0.7731018662452698, 'confidence': tensor([0.0096])}
+File 24423_32.wav evaluated. Results: {'result': 58.81028398573718, 'comet': 0.914243221282959, 'confidence': tensor([1.1826e-06])}
+File 70362_23.wav evaluated. Results: {'result': 53.81399608950348, 'comet': 0.7571774125099182, 'confidence': tensor([5.2078e-14])}
+File 82092_16.wav evaluated. Results: {'result': 47.60248163658838, 'comet': 0.6265668272972107, 'confidence': tensor([1.5855e-15])}
+File 80431_61.wav evaluated. Results: {'result': 45.858911096101174, 'comet': 0.6150391101837158, 'confidence': tensor([0.0003])}
+File 70362_1.wav evaluated. Results: {'result': 42.11107448101736, 'comet': 0.5968871116638184, 'confidence': tensor([2.2195e-14])}
+File 80431_51.wav evaluated. Results: {'result': 61.19402798360314, 'comet': 0.7358144521713257, 'confidence': tensor([2.0091e-13])}
+File 87645_87.wav evaluated. Results: {'result': 51.90308749334482, 'comet': 0.8641940355300903, 'confidence': tensor([9.2707e-08])}
+File 76213_31.wav evaluated. Results: {'result': 37.98663440956681, 'comet': 0.7675735354423523, 'confidence': tensor([6.2888e-07])}
+File 75498_13.wav evaluated. Results: {'result': 40.28050747029319, 'comet': 0.7716807723045349, 'confidence': tensor([1.6496e-14])}
+File 86062_28.wav evaluated. Results: {'result': 58.54030428898371, 'comet': 0.8198875784873962, 'confidence': tensor([4.6657e-06])}
+File 81387_29.wav evaluated. Results: {'result': 49.05514791914869, 'comet': 0.6129966974258423, 'confidence': tensor([2.5165e-14])}
+File 81387_159.wav evaluated. Results: {'result': 46.77931134831148, 'comet': 0.9235508441925049, 'confidence': tensor([3.6358e-06])}
+File 87645_81.wav evaluated. Results: {'result': 69.16077111545931, 'comet': 0.7794411778450012, 'confidence': tensor([1.1394e-05])}
+File 71900_35.wav evaluated. Results: {'result': 37.79156555977695, 'comet': 0.6387540698051453, 'confidence': tensor([0.0082])}
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n520
+Job ID: 23909701
+Cluster: uc2
+User/Group: ueojl/stud
+State: TIMEOUT (exit code 0)
+Nodes: 1
+Cores per node: 20
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 10:06:40 core-walltime
+Job Wall-clock time: 00:30:20
+Memory Utilized: 13.37 GB
+Memory Efficiency: 7.28% of 183.59 GB

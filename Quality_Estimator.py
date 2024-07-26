@@ -15,11 +15,11 @@ class QualityEstimator:
                 "target_sample_rates": [8000, 32000]
             },
             "speed_warp": {
-                "speeds": [0.5, 1, 2]
+                "speeds": [0.7, 1, 1.7]
             }, 
             "frequency_filtering": {
-                "pass_cutoffs": [(100, 1000), (1000, 10000)],
-                "stop_cutoffs": [(100, 1000), (1000, 10000)]
+                "pass_cutoffs": [(300, 3000), (1000, 10000)],
+                "stop_cutoffs": [(300, 3000), (1000, 10000)]
             }
         }
         self.perturbator = Perturbator(self.config)

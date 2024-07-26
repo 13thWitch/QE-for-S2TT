@@ -61,7 +61,7 @@ def evaluate(model=str, source_language="eng", target_language="deu"):
     scores_df = pd.DataFrame(columns=['audio_file', 'result', 'comet', 'confidence'])
     scores_df['audio_file'] = list(scores.keys())
     scores_df['result'] = [value['result'] for value in scores.values()]
-    scores_df['comet'] = [value['expected'] for value in scores.values()]
+    scores_df['comet'] = [value['comet'] for value in scores.values()]
     scores_df['confidence'] = [value['confidence'] for value in scores.values()]
     scores_df.to_csv("IWSLT23_scores.csv", index=False)
 

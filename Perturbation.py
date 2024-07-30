@@ -107,6 +107,10 @@ class Perturbator:
             # Inverse Fourier Transform to convert back to the time domain
             result[str((lower, upper)) + "_pass"] = ifft(audio_fft_pass).real  # Take the real part
         
+        if not "stop_cutoffs" in self.instruction["frequency_filtering"].keys():
+            # no stop filtering requested, thus we are done
+            return result
+        
         for (lower, upper) in self.instruction["frequency_filtering"]["stop_cutoffs"]:
             audio_fft_stop = audio_fft.copy()
             # Zero out components within the band-stop range

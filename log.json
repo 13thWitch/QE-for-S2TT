@@ -1,0 +1,52 @@
+{
+    "Seamless_1-145_initial": {
+        "pearson": 0.38943382707009816,
+        "mae": 26.099022501218755,
+        "rmse": 29.776952013441996,
+        "config": {
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.001
+                    ]
+                },
+                "resampling": {
+                    "target_sample_rates": [
+                        8000,
+                        32000
+                    ]
+                },
+                "speed_warp": {
+                    "speeds": [
+                        0.7,
+                        1,
+                        1.7
+                    ]
+                },
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            300,
+                            3000
+                        ],
+                        [
+                            1000,
+                            10000
+                        ]
+                    ],
+                    "stop_cutoffs": [
+                        [
+                            300,
+                            3000
+                        ],
+                        [
+                            1000,
+                            10000
+                        ]
+                    ]
+                }
+            },
+            "weights": {}
+        }
+    }
+}

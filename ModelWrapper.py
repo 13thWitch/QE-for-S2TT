@@ -3,6 +3,7 @@ from utils import huggingface_models
 from transformers import AutoModel, AutoProcessor, AutoConfig
 import resampy
 import whisper
+import torch
 import numpy as np
 import os
 
@@ -29,6 +30,7 @@ class STModel:
         To add a custom model, add a new navigation key with custom implemented load and infer methods.
         """
         super().__init__()
+        self.device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
         self.model_key = model_key
         self.source_language = source_language
         self.target_language = target_language
@@ -85,7 +87,7 @@ class STModel:
         Load the whisper base model. Can be manually changed to other models (choice of tiny, base, small, medium, and large).
         For english transcription, choose {tiny, base, small, medium, large}.en
         """
-        self.model = whisper.load_model("base")
+        self.model = whisper.load_model("base", device=self.device)
 
     def load_huggingface_model(self):
         """
@@ -98,6 +100,8 @@ class STModel:
         self.navigation[self.model_key] = self.navigation["huggingface"]
         self.processor = AutoProcessor.from_pretrained(self.model_key)
         self.model = AutoModel.from_pretrained(self.model_key)
+        if self.device == torch.device("cuda"):
+            self.model.cuda()
         self.config = AutoConfig.from_pretrained(self.model_key)
 
     # Inference
@@ -134,6 +138,7 @@ class STModel:
         if sample_rate != whisper_sample_rate:
             audio = resampy.resample(audio, sample_rate, whisper_sample_rate)
         # whisper inference on audio
+        torch.tensor(audio, device=self.device)
         result = self.model.transcribe(
             audio=audio.astype(np.float32),
             language=self.source_language,
@@ -142,7 +147,7 @@ class STModel:
                 if self.source_language != self.target_language
                 else "transcribe"
             ),
-            fp16=False,
+            fp16=self.device.type == "cuda",
             verbose=False,
             **self.additional_args,
         )
@@ -166,6 +171,7 @@ class STModel:
         audio_inputs = self.processor(
             audios=working_audio, sampling_rate=self.model.config.sampling_rate, return_tensors="pt"
         )
+        audio_inputs = {k: v.to(device=self.device) for k, v in audio_inputs.items()}
         output_tokens = self.model.generate(**audio_inputs, tgt_lang=self.target_language, generate_speech=False, **self.additional_args)
         translated_text_from_audio = self.processor.decode(
             output_tokens[0].tolist()[0], skip_special_tokens=True
@@ -183,7 +189,7 @@ class STModel:
         transition_scores = self.model.compute_transition_scores(
             output.sequences, output.scores, normalize_logits=True
         )
-        probabilities = np.exp(transition_scores.sum(axis=1))
+        probabilities = np.exp(transition_scores.sum(axis=1).cpu())
         return probabilities
     
     def get_token_probabilities(self, output):

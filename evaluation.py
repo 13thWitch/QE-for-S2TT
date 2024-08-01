@@ -1,3 +1,4 @@
+import math
 from Quality_Estimator import QualityEstimator
 from comet import download_model, load_from_checkpoint
 import soundfile as sf
@@ -46,12 +47,15 @@ def evaluate(model=str, source_language="eng", target_language="deu"):
 
     # evaluate audio files
     scores = dict()
-    iwslt23 = pd.read_csv(os.path.join("eval-prep", "IWSLT23_with_files.csv"))
+    iwslt23 = pd.read_csv(input_path)
     for _, row in iwslt23.loc[iwslt23['lp'] == 'en-de'].iterrows():
         audio, sr = load_audio(row['audio_file'], row['domain'])
         if audio is None:
             continue
         score, eval_data = QE_Model.estimate_quality(audio, sr, eval=True)
+        if math.isnan(score):
+            print(f"Score for {row['audio_file']} not available.")
+            continue
         scores[row['audio_file']] = {
             "result": score,
             "comet": comet(row['src'], eval_data['translation'], row['ref']),

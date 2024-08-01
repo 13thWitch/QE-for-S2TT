@@ -37,17 +37,24 @@ class QualityEstimator:
         perturbations = self.perturbator.get_perturbations(audio=audio, sample_rate=sample_rate)
         perturbations["original"] = audio
         if not eval:
-            predictions = self.model.infer(perturbations, sample_rate, return_confidence=eval)
+            try: 
+                predictions = self.model.infer(perturbations, sample_rate, return_confidence=eval)
+                score = self.QEHead.get_QE_score(predictions=predictions, metric="bleu", interpret_as_corpus=False)
+                return score
+            except:
+                return float('NaN')
+
+        try:
+            predictions, likelihoods = self.model.infer(perturbations, sample_rate, return_confidence=eval)
             score = self.QEHead.get_QE_score(predictions=predictions, metric="bleu", interpret_as_corpus=False)
-            return score
+            eval_data = {
+                "translation": predictions['original'],
+                "confidence": likelihoods['original'],
+            }
+            return score, eval_data
+        except:
+            return float('NaN'), {"translation": None, "confidence": float("NaN")}
         
-        predictions, likelihoods = self.model.infer(perturbations, sample_rate, return_confidence=eval)
-        score = self.QEHead.get_QE_score(predictions=predictions, metric="bleu", interpret_as_corpus=False)
-        eval_data = {
-            "translation": predictions['original'],
-            "confidence": likelihoods['original'],
-        }
-        return score, eval_data
     
     def document(self, result, reference_QE=None):
         """

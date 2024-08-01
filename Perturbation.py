@@ -31,6 +31,8 @@ class Perturbator:
             for param, value in parameters.items():
                 self.instruction[perturbation_strat][param] = value
         
+        self.instruction = {k: v for k, v in self.instruction.items() if k in config.keys()}
+        
     
     def resample(self, audio, sample_rate):
         """

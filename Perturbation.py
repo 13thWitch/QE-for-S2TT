@@ -107,7 +107,7 @@ class Perturbator:
                     audio_fft_pass[-(i-1)] = 0
 
             # Inverse Fourier Transform to convert back to the time domain
-            result[str((lower, upper)) + "_pass"] = ifft(audio_fft_pass).real  # Take the real part
+            result[f"pass{str((lower, upper))}"] = ifft(audio_fft_pass).real  # Take the real part
         
         if not "stop_cutoffs" in self.instruction["frequency_filtering"].keys():
             # no stop filtering requested, thus we are done
@@ -120,7 +120,7 @@ class Perturbator:
                 if freqs[i] >= lower and freqs[i+1] <= upper:
                     audio_fft_stop[i] = 0
                     audio_fft_stop[-(i-1)] = 0
-            result[str((lower, upper)) + "_stop"] = ifft(audio_fft_stop).real
+            result[f"stop{str((lower, upper))}"] = ifft(audio_fft_stop).real
             
         return result
 

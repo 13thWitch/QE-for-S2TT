@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import json
 
-scores = pd.read_csv("IWSLT23_scores_1-145.csv")
+scores = pd.read_csv("IWSLT23_seamless_scores.csv")
 qe_scores_np = scores["result"].to_numpy()
 comet_scores_np = scores["comet"].to_numpy() * 100
 # confidence_np = scores["confidence"].to_numpy()
@@ -47,8 +47,8 @@ run_info = {
     "config": config
 }
 
-with open("log.json", "r", encoding="utf-8") as f:
+with open("log_bleu.json", "r", encoding="utf-8") as f:
     log = json.load(f)
-with open("log.json", "w", encoding="utf-8") as f:
+with open("log_bleu.json", "w", encoding="utf-8") as f:
     log[run_name] = run_info
     json.dump(log, f, ensure_ascii=False, indent=4)

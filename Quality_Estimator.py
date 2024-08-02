@@ -7,6 +7,11 @@ import json
 class QualityEstimator:
     def __init__(self, model, source_lang, target_lang):
         self.model = STModel(model, target_language=target_lang, source_language=source_lang)
+        # Options: 
+        # frequency_filtering with spec tuple array pass_cutoffs
+        # resampling with spec array target_sample_rates
+        # random_noise with spec array std_ns
+        # speed_warp with spec array speeds
         self.config = {
             "random_noise": {
                 "std_ns": [0.001]
@@ -23,6 +28,11 @@ class QualityEstimator:
             }
         }
         self.perturbator = Perturbator(self.config)
+        # Keylog for weights
+        # frequency_filtering-{stop, pass}(lower, upper)
+        # resampling-newsr
+        # random_noise-stdns
+        # speed_warp-speed
         self.weights = {}
         self.QEHead = QEHead(weights=self.weights)
 

@@ -73,7 +73,6 @@ class Perturbator:
         result = dict()
         # TODO: add pink, brown, white etc.
         for std_n in self.instruction["random_noise"]["std_ns"]:
-            RMS = math.sqrt(np.mean(audio**2))
             noise = np.random.normal(0, std_n, audio.shape[0])
             noisy = audio + noise
             result[str(std_n)] = noisy

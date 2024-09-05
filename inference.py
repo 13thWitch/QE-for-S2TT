@@ -4,7 +4,6 @@ from ModelWrapper import STModel
 from QEHead import QEHead
 import soundfile as sf
 import argparse
-import json
 import os
 
 path = os.path.dirname(os.path.realpath(__file__))
@@ -27,20 +26,21 @@ def main():
     parser.add_argument("--audio", type=str, required=True)
     parser.add_argument("--target_lang", type=str, default="en")
     parser.add_argument("--source_lang", type=str, default="en")
-    parser.add_argument("--transcript", type=str, default="")
+    parser.add_argument("--metric", type=str, default="bleu")
+    parser.add_argument("--as_corpus", type=bool, default=False)
     args = parser.parse_args()
 
     audio, sampling_rate = load_audio(args.audio)
     QE_Model = QualityEstimator(args.model, args.source_lang, args.target_lang)
-    score = QE_Model.estimate_quality(audio, sampling_rate)
+    score = QE_Model.estimate_quality(audio, sampling_rate, metric=args.metric, as_corpus=args.as_corpus)
     print(f"Quality Estimation: {score}")
 
 def S2TT_inference_test():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, required=True)
     parser.add_argument("--audio", type=str, required=True)
-    parser.add_argument("--target_lang", type=str, default="en")
-    parser.add_argument("--source_lang", type=str, default="en")
+    parser.add_argument("--target_lang", type=str, default="eng")
+    parser.add_argument("--source_lang", type=str, default="eng")
     args = parser.parse_args()
     load_STModel(args.model, target_language=args.target_lang, source_language=args.source_lang)
     audio, sampling_rate = load_audio(args.audio)

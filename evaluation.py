@@ -29,7 +29,7 @@ def load_audio(file, domain):
                 print(f"File {file} not found in either domain.")
                 return None, None
 
-def evaluate(model=str, source_language="eng", target_language="deu"):
+def evaluate(model=str, source_language="eng", target_language="deu", metric="bleu", as_corpus=False):
     # load Quality Estimation model
     QE_Model = QualityEstimator(model, source_language, target_language)
 
@@ -52,7 +52,7 @@ def evaluate(model=str, source_language="eng", target_language="deu"):
         audio, sr = load_audio(row['audio_file'], row['domain'])
         if audio is None:
             continue
-        score, eval_data = QE_Model.estimate_quality(audio, sr, eval=True)
+        score, eval_data = QE_Model.estimate_quality(audio, sr, metric=metric, as_corpus=as_corpus, eval=True)
         if math.isnan(score):
             print(f"Score for {row['audio_file']} not available.")
             continue
@@ -78,11 +78,13 @@ def main():
     parser.add_argument("--target_lang", type=str, default="deu")
     parser.add_argument("--input", type=str, default=os.path.join("eval-prep", "IWSLT23_with_files.csv"))
     parser.add_argument("--output", type=str, default="")
+    parser.add_argument("--metric", type=str, default="bleu")
+    parser.add_argument("--as_corpus", type=bool, default=False)
     args = parser.parse_args()
     global input_path, output_path
     input_path = args.input
     output_path = args.output
-    evaluate(args.model, args.source_lang, args.target_lang)
+    evaluate(args.model, args.source_lang, args.target_lang, metric=args.metric, as_corpus=args.as_corpus)
 
 
 if __name__ == "__main__":

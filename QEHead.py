@@ -5,13 +5,13 @@ class QEHead:
     def __init__(self, weights):
         self.weights = weights
         self.metrics = {
-            # "comet": lambda x, y, z: comet(x, y, z),
             "bleu": lambda x, y: bleu(x, y), 
             "chrf": lambda x, y: chrf(x, y),
             "ter": lambda x, y: ter(x, y),
         }
-        comet_path = download_model("Unbabel/wmt22-comet-da")
-        self.comet_model = load_from_checkpoint(comet_path)
+        # To use reference-free comet as metric, add huggingface liscence key: https://github.com/Unbabel/COMET/blob/master/LICENSE.models.md
+        # comet_path = download_model("Unbabel/wmt22-cometkiwi-da")
+        # self.comet_model = load_from_checkpoint(comet_path)
 
     def get_QE_score(self, predictions, metric="bleu", interpret_as_corpus=False):
         """
@@ -39,7 +39,6 @@ class QEHead:
         @param original: Original prediction to compare to
         @param metric: Metric to use for deviation calculation, default is COMET
         @return: dict of deviations for each prediction
-        TODO: test
         """
         metric = self.metrics[metric.lower()]
         deviations = dict()
@@ -52,7 +51,6 @@ class QEHead:
         Aggregate the given scores using the QE weights.
         @param scores: dict of tags and their qualscores to aggregate
         @return: weighted aggregated deviations
-        TODO: test
         """
         weighted_scores = [value * self.weights[key] if key in self.weights else value for key, value in scores.items()]
         return sum(weighted_scores) / len(weighted_scores)
@@ -63,29 +61,11 @@ class QEHead:
         @param score: float raw score
         @param prediction_tags: List of tags used in the prediction
         @return: float normalized score
-        TODO: test
         """
         used_weights = [self.weights[tag] for tag in prediction_tags if tag in self.weights]
         num_unweighted = len(prediction_tags) - len(used_weights)
         max_score = (sum(used_weights) + num_unweighted) / len(prediction_tags)
         return (score / max_score)   
-    
-
-    # TODO: call comet as transcription, perturbed translation, original translation
-    def comet(self, transcription, translation, reference):
-        """
-        Calculate the COMET score of machine translation and reference given the source language text.
-        @param transcription: Source language textual transcription
-        @param translation: Target language generated translation
-        @param reference: Target language reference translation
-        @return: COMET score
-        """
-        data = [{
-            "src": transcription,
-            "mt": translation,
-            "ref": reference
-        }]
-        return self.comet_model.predict(data).system_score
 
 def bleu(hypothesis, references):
     """
@@ -110,10 +90,11 @@ def chrf(hypothesis, references):
 
 def ter(hypothesis, references):
     """
-    Calculate the TER between two sentences.
+    Calculate the TER between two sentences. 
+    Caution! TER returns [0, 100]
     @param hypothesis: First sentence to compare
     @param references: List of reference sentences
     @return: TER score between the two sentences
     """
     ter = TER()
-    return ter.sentence_score(hypothesis=hypothesis, references=references).score
+    return (100 - ter.sentence_score(hypothesis=hypothesis, references=references).score)

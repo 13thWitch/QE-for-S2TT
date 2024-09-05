@@ -1,7 +1,6 @@
 from ModelWrapper import STModel
 from Perturbation import Perturbator
 from QEHead import QEHead
-import torch
 import json
 
 class QualityEstimator:
@@ -36,27 +35,29 @@ class QualityEstimator:
         self.weights = {}
         self.QEHead = QEHead(weights=self.weights)
 
-    def estimate_quality(self, audio, sample_rate, eval=False):
+    def estimate_quality(self, audio, sample_rate, metric="bleu", eval=False, as_corpus=False):
         """
         Estimate the quality of the model's translation of the audio. Returns additional info if eval=True.
         @param audio: audio file to be translated
         @param sample_rate: sample rate of the audio file
+        @param metric: metric to use for quality estimation
         @param eval: whether to return the confidence of the translation
-        @return: BLEU score of the translation, and additional info if eval=True
+        @param as_corpus: whether to interpret the translations as a corpus
+        @return: score of the translation, and additional info if eval=True
         """
         perturbations = self.perturbator.get_perturbations(audio=audio, sample_rate=sample_rate)
         perturbations["original"] = audio
         if not eval:
             try: 
                 predictions = self.model.infer(perturbations, sample_rate, return_confidence=eval)
-                score = self.QEHead.get_QE_score(predictions=predictions, metric="bleu", interpret_as_corpus=False)
+                score = self.QEHead.get_QE_score(predictions=predictions, metric=metric, interpret_as_corpus=as_corpus)
                 return score
             except:
                 return float('NaN')
 
         try:
             predictions, likelihoods = self.model.infer(perturbations, sample_rate, return_confidence=eval)
-            score = self.QEHead.get_QE_score(predictions=predictions, metric="bleu", interpret_as_corpus=False)
+            score = self.QEHead.get_QE_score(predictions=predictions, metric=metric, interpret_as_corpus=as_corpus)
             eval_data = {
                 "translation": predictions['original'],
                 "confidence": likelihoods['original'],

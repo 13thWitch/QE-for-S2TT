@@ -1,6 +1,7 @@
 from ModelWrapper import STModel
 from Perturbation import Perturbator
 from QEHead import QEHead
+from config import config, weights
 import json
 
 class QualityEstimator:
@@ -11,28 +12,14 @@ class QualityEstimator:
         # resampling with spec array target_sample_rates
         # random_noise with spec array std_ns
         # speed_warp with spec array speeds
-        self.config = {
-            "random_noise": {
-                "std_ns": [0.001]
-            }, 
-            "resampling": {
-                "target_sample_rates": [8000, 32000]
-            },
-            "speed_warp": {
-                "speeds": [0.7, 1, 1.7]
-            }, 
-            "frequency_filtering": {
-                "pass_cutoffs": [(300, 3000), (1000, 10000)],
-                "stop_cutoffs": [(300, 3000), (1000, 10000)]
-            }
-        }
+        self.config = config
         self.perturbator = Perturbator(self.config)
         # Keylog for weights
         # frequency_filtering-{stop, pass}(lower, upper)
         # resampling-newsr
         # random_noise-stdns
         # speed_warp-speed
-        self.weights = {}
+        self.weights = weights
         self.QEHead = QEHead(weights=self.weights)
 
     def estimate_quality(self, audio, sample_rate, metric="bleu", eval=False, as_corpus=False):

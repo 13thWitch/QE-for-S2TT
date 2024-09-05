@@ -43,7 +43,7 @@ class QualityEstimator:
         @param metric: metric to use for quality estimation
         @param eval: whether to return the confidence of the translation
         @param as_corpus: whether to interpret the translations as a corpus
-        @return: score of the translation, and additional info if eval=True
+        @return: score of the translation, and additional info if eval=True. In case of failure returnes None values in correct output format
         """
         perturbations = self.perturbator.get_perturbations(audio=audio, sample_rate=sample_rate)
         perturbations["original"] = audio
@@ -53,7 +53,7 @@ class QualityEstimator:
                 score = self.QEHead.get_QE_score(predictions=predictions, metric=metric, interpret_as_corpus=as_corpus)
                 return score
             except:
-                return float('NaN')
+                return None
 
         try:
             predictions, likelihoods = self.model.infer(perturbations, sample_rate, return_confidence=eval)
@@ -64,7 +64,7 @@ class QualityEstimator:
             }
             return score, eval_data
         except:
-            return float('NaN'), {"translation": None, "confidence": float("NaN")}
+            return None, {"translation": None, "confidence": None}
         
     
     def document(self, result, reference_QE=None):

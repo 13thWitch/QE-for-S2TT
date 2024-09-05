@@ -53,7 +53,7 @@ def evaluate(model=str, source_language="eng", target_language="deu", metric="bl
         if audio is None:
             continue
         score, eval_data = QE_Model.estimate_quality(audio, sr, metric=metric, as_corpus=as_corpus, eval=True)
-        if math.isnan(score):
+        if score is None:
             print(f"Score for {row['audio_file']} not available.")
             continue
         scores[row['audio_file']] = {

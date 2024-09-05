@@ -191,6 +191,18 @@ class STModel:
         )
         probabilities = np.exp(transition_scores.sum(axis=1).cpu())
         return probabilities
+        # MANUAL sequence probability calculation
+        # apply softmax, then logarithm on each predicted slot
+        softmax_per_predicted = [torch.nn.functional.log_softmax(output['scores'][i], dim=1).cpu() for i in range(len(output['scores']))]
+        # remove auxiliary tokens
+        sequence = output['sequences'][0][1:len(output['scores'])+1].tolist()
+        # extract log probabilities of the predicted tokens
+        log_probs = []
+        for i in range(len(sequence)):
+            log_probs.append(softmax_per_predicted[i][0][sequence[i]])
+        # calculate the probability of the whole sequence
+        log_prob = np.exp(sum(log_probs))
+        return np.exp(sum(log_probs))
     
     def get_token_probabilities(self, output):
         """

@@ -97,16 +97,17 @@ class Perturbator:
         num_samples = len(audio_fft)
         freqs = np.fft.fftfreq(num_samples, 1/sample_rate)
 
-        for (lower, upper) in self.instruction["frequency_filtering"]["pass_cutoffs"]:
-            audio_fft_pass = audio_fft.copy()
-            # Zero out components not within the band-pass range
-            for i in range(num_samples//2):
-                if freqs[i] < lower or freqs[i+1] > upper:
-                    audio_fft_pass[i] = 0
-                    audio_fft_pass[-(i-1)] = 0
+        if "pass_cutoffs" in self.instruction["frequency_filtering"].keys():
+            for (lower, upper) in self.instruction["frequency_filtering"]["pass_cutoffs"]:
+                audio_fft_pass = audio_fft.copy()
+                # Zero out components not within the band-pass range
+                for i in range(num_samples//2):
+                    if freqs[i] < lower or freqs[i+1] > upper:
+                        audio_fft_pass[i] = 0
+                        audio_fft_pass[-(i-1)] = 0
 
-            # Inverse Fourier Transform to convert back to the time domain
-            result[f"pass{str((lower, upper))}"] = ifft(audio_fft_pass).real  # Take the real part
+                # Inverse Fourier Transform to convert back to the time domain
+                result[f"pass{str((lower, upper))}"] = ifft(audio_fft_pass).real  # Take the real part
         
         if not "stop_cutoffs" in self.instruction["frequency_filtering"].keys():
             # no stop filtering requested, thus we are done

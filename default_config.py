@@ -1,4 +1,4 @@
-config = {
+perturbation = {
     "random_noise": {
                     "std_ns": [
                         0.003,
@@ -23,6 +23,9 @@ weights = {
                 "random_noise-0.012": 2.1,
                 "random_noise-0.015": 2.2,
         }
+
+metric = "bleu"
+as_corpus = False
 
 
 """config = {

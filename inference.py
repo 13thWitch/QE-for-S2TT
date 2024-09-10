@@ -1,9 +1,8 @@
 from Quality_Estimator import QualityEstimator
-from Perturbation import Perturbator
 from ModelWrapper import STModel
-from QEHead import QEHead
 import soundfile as sf
 import argparse
+import json
 import os
 
 path = os.path.dirname(os.path.realpath(__file__))
@@ -24,68 +23,37 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, required=True)
     parser.add_argument("--audio", type=str, required=True)
-    parser.add_argument("--target_lang", type=str, default="en")
-    parser.add_argument("--source_lang", type=str, default="en")
+    parser.add_argument("--target_lang", type=str, default="eng")
+    parser.add_argument("--source_lang", type=str, default="eng")
     parser.add_argument("--metric", type=str, default="bleu")
     parser.add_argument("--as_corpus", type=bool, default=False)
+    parser.add_argument("--from_config", type=str, default="")
     args = parser.parse_args()
 
     audio, sampling_rate = load_audio(args.audio)
-    QE_Model = QualityEstimator(args.model, args.source_lang, args.target_lang)
+    if args.from_config:
+        with open(args.from_config, "r") as f:
+            config = json.read(f)
+        QE_Model = QualityEstimator(
+            args.model, 
+            args.source_lang, 
+            args.target_lang, 
+            perturbation=config["perturbation"], 
+            weights=config["weights"], 
+            as_corpus=config["as_corpus"], 
+            metric=config["metric"]
+            )
+    else:
+        QE_Model = QualityEstimator(args.model, args.source_lang, args.target_lang)
     score = QE_Model.estimate_quality(audio, sampling_rate, metric=args.metric, as_corpus=args.as_corpus)
     print(f"Quality Estimation: {score}")
 
-def S2TT_inference_test():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=str, required=True)
-    parser.add_argument("--audio", type=str, required=True)
-    parser.add_argument("--target_lang", type=str, default="eng")
-    parser.add_argument("--source_lang", type=str, default="eng")
-    args = parser.parse_args()
-    load_STModel(args.model, target_language=args.target_lang, source_language=args.source_lang)
-    audio, sampling_rate = load_audio(args.audio)
-    print(model.infer([audio], sampling_rate))
-    print("Test successful")
-
-def perturbation_test():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--audio", type=str, required=True)
-    args = parser.parse_args()
-    audio, sampling_rate = load_audio(args.audio)
-    perturbator = Perturbator({
-        "random_noise": {
-            "std_ns": [0.001]
-        }, 
-        "resampling": {
-            "target_sample_rates": [8000, 32000]
-        },
-        "speed_warp": {
-            "speeds": [0.5, 1, 2]
-        }, 
-        "frequency_filtering": {
-            "pass_cutoffs": [(100, 1000), (1000, 10000)],
-            "stop_cutoffs": [(100, 1000), (1000, 10000)]
-        }
-    })
-    result = perturbator.get_perturbations(audio=audio, sample_rate=sampling_rate, transcription="Somos grandes fans de nosso clubo de futebol.")
-    for strategy, perturbed_audio in result.items():
-        sf.write(f"perturbator_{strategy}.wav", perturbed_audio, samplerate=sampling_rate)
-    print("Test successful")
-
-def qe_test():
-    head = QEHead(weights={})
-    predictions = {
-        "original": "This is a test",
-        "model2": "That is a test",
-        "model3": "This is the test",
-        "model4": "That is the test",
-        "model5": "That's a test"
-    }
-    print(f'Score: {head.get_QE_score(predictions, metric="ter")}')
-
 
 if __name__ == "__main__":
-    # perturbation_test()
-    # S2TT_inference_test()
-    # qe_test()
+    """
+    This is an inference script for the Quality Estimation model. 
+    Its configuration is the default configuration unless a config file is passed. 
+    Metric and variant for translation comparison may be customized independently.
+    """
     main()
+

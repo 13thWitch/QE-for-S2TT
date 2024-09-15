@@ -33,7 +33,7 @@ def main():
     audio, sampling_rate = load_audio(args.audio)
     if args.from_config:
         with open(args.from_config, "r") as f:
-            config = json.read(f)
+            config = json.load(f)
         QE_Model = QualityEstimator(
             args.model, 
             args.source_lang, 

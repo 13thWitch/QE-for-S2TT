@@ -25,7 +25,7 @@ def main():
     parser.add_argument("--audio", type=str, required=True)
     parser.add_argument("--target_lang", type=str, default="eng")
     parser.add_argument("--source_lang", type=str, default="eng")
-    parser.add_argument("--metric", type=str, default="bleu")
+    parser.add_argument("--metric", type=str, required=False)
     parser.add_argument("--as_corpus", type=bool, default=False)
     parser.add_argument("--from_config", type=str, default="")
     args = parser.parse_args()

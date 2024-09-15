@@ -9,8 +9,6 @@ import os
 
 path = os.path.dirname(os.path.realpath(__file__))
 
-# TODO: make this an interface and implement for custom models, including whisper and huggingface
-
 class STModel:
 
     def __init__(
@@ -132,7 +130,6 @@ class STModel:
     def whisper_infer(self, audio, sample_rate=None, return_confidence=False):
         """
         Perform whisper inference on single audio sample to specified target language. Passes addittional Arguments directly to whisper transcribe.
-        TODO: on storage/performance problems bind fp16 to cuda device type (switches to fp16 on gpu, fp32 on cpu)
         @param audio: Audio sample to perform inference on
         @param sample_rate: Sample rate of the audio sample
         @param return_confidence: whether to return the confidence of the model's prediction
@@ -192,9 +189,9 @@ class STModel:
         )
         if not return_confidence:
             return translated_text_from_audio
-        return translated_text_from_audio, self.get_prediction_probability(output_tokens)
+        return translated_text_from_audio, self.get_hf_prediction_probability(output_tokens)
     
-    def get_prediction_probability(self, output):
+    def get_hf_prediction_probability(self, output):
         """
         Get the prediction probability of the huggingface model's output.
         @param output: The output of the model
@@ -218,7 +215,7 @@ class STModel:
         log_prob = np.exp(sum(log_probs))
         return np.exp(sum(log_probs))
     
-    def get_token_probabilities(self, output):
+    def get_hf_token_probabilities(self, output):
         """
         Get the token probabilities of the huggingface model's output.
         @param output: The output of the model

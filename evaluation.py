@@ -1,4 +1,3 @@
-import math
 from Quality_Estimator import QualityEstimator
 from comet import download_model, load_from_checkpoint
 import soundfile as sf
@@ -79,7 +78,7 @@ def evaluate(model=str, source_language="eng", target_language="deu", passed_con
     scores = dict()
     iwslt23 = pd.read_csv(input_path)
 
-    inference_times = np.array([])
+    inference_times = []
     index = 1
     # Iterate through eval data and predict
     for _, row in iwslt23.loc[iwslt23['lp'] == 'en-de'].iterrows():
@@ -107,8 +106,10 @@ def evaluate(model=str, source_language="eng", target_language="deu", passed_con
             "confidence": eval_data['confidence']
         }
         print(f"File {row['audio_file']} evaluated. Results: {scores[row['audio_file']]}")
-        print(f"Median inference time: {np.median(inference_times)}")
-        print(f"Mean inference time: {np.mean(inference_times)}")
+
+    inference_times = np.array([inference_times])
+    print(f"Median inference time: {np.median(inference_times)}")
+    print(f"Mean inference time: {np.mean(inference_times)}")
 
     # save scores to csv
     scores_df = pd.DataFrame(columns=['audio_file', 'result', 'comet', 'confidence'])

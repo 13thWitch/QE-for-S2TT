@@ -90,11 +90,14 @@ def chrf(hypothesis, references):
 
 def ter(hypothesis, references):
     """
-    Calculate the TER between two sentences. 
-    Caution! TER returns [0, 100]
+    Calculate the inverse TER between two sentences. 
+    Caution! TER returns [0, 100]. If TER score is more than 100, it is treated as 100.
     @param hypothesis: First sentence to compare
     @param references: List of reference sentences
     @return: TER score between the two sentences
     """
     ter = TER()
-    return (100 - ter.sentence_score(hypothesis=hypothesis, references=references).score)
+    ter_score = ter.sentence_score(hypothesis=hypothesis, references=references).score
+    if ter_score > 100.0:
+        ter_score = 100.0
+    return (100 - ter_score)

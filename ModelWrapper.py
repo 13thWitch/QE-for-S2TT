@@ -49,6 +49,10 @@ class STModel:
             "huggingface": {
                 "load": lambda: self.load_huggingface_model(),
                 "infer": lambda audio, sr, rc: self.huggingface_infer(audio, sr, return_confidence=rc),
+            },
+            "stupid_model": {
+                "load": lambda: print("Loaded Stupid Model."),
+                "infer": lambda audio, sr, rc: self.stupid_infer(audio, sr, return_confidence=rc)
             }
         }
         print(f'Instace for model key {model_key} created.')
@@ -155,6 +159,16 @@ class STModel:
             return result["text"]
         confidence = np.exp(float(result['segments'][0]['avg_logprob']))
         return result["text"], confidence
+    
+    def stupid_infer(self, audio, sample_rate=None, return_confidence=False):
+        """
+        A stupid translator which always predicts the same translation.
+        For evaluation purposes only.
+        """
+        translation = "Dieser Satz is eine sehr eintönige Übersetzung, finde ich."
+        if return_confidence:
+            return translation, 0
+        return translation
 
     def huggingface_infer(self, audio, sample_rate=None, return_confidence=False):
         """

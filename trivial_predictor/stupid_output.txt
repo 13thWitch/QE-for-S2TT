@@ -1,0 +1,117 @@
+Starting Stupid Model Evaluation
+IWSLT23_with_files.csv
+Instace for model key stupid_model created.
+Loaded Stupid Model.
+Model loaded successfully.
+File 80431_44.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.34180212020874023, 'confidence': 0}
+File 81387_118.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.35518595576286316, 'confidence': 0}
+File 91039_40.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.42443183064460754, 'confidence': 0}
+File 91039_29.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.4303785562515259, 'confidence': 0}
+File 70362_13.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.40496626496315, 'confidence': 0}
+File 86145_14.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3764486312866211, 'confidence': 0}
+File 81387_123.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.31647989153862, 'confidence': 0}
+File 84145_46.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3758104741573334, 'confidence': 0}
+File 81387_59.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.36270996928215027, 'confidence': 0}
+File 78106_3.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.46857109665870667, 'confidence': 0}
+File 64520_43.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3472171127796173, 'confidence': 0}
+File 82027_7.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.2932530641555786, 'confidence': 0}
+File 80431_72.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3351808488368988, 'confidence': 0}
+File 87645_59.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.40391841530799866, 'confidence': 0}
+File 84818_33.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3892189562320709, 'confidence': 0}
+File 84818_77.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.35194262862205505, 'confidence': 0}
+File 89208_28.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3145693838596344, 'confidence': 0}
+File 91039_69.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.46878042817115784, 'confidence': 0}
+File 82791_21.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.340072363615036, 'confidence': 0}
+File 86145_8.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.287874698638916, 'confidence': 0}
+File 78705_20.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.33096590638160706, 'confidence': 0}
+File 81336_31.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.4115349352359772, 'confidence': 0}
+File 76213_10.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.40391239523887634, 'confidence': 0}
+File 87645_73.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3838628828525543, 'confidence': 0}
+File 81212_36.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.40444880723953247, 'confidence': 0}
+File 79874_23.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.33713242411613464, 'confidence': 0}
+File 86145_34.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.30560997128486633, 'confidence': 0}
+File 24424_1.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.4635586440563202, 'confidence': 0}
+File 79305_13.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.33555299043655396, 'confidence': 0}
+File 91039_64.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3801462948322296, 'confidence': 0}
+File 91371_12.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.304693341255188, 'confidence': 0}
+File 81212_20.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.38370954990386963, 'confidence': 0}
+File 79874_27.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.29593855142593384, 'confidence': 0}
+File 78705_6.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3253426253795624, 'confidence': 0}
+File 20086_86.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.4659753739833832, 'confidence': 0}
+File 81387_54.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.4739554226398468, 'confidence': 0}
+File 84818_129.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.35706937313079834, 'confidence': 0}
+File 82092_21.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.2969716787338257, 'confidence': 0}
+File 81160_27.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.31630274653434753, 'confidence': 0}
+File 24425_30.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.33279183506965637, 'confidence': 0}
+File 84818_59.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.38102442026138306, 'confidence': 0}
+File 84818_85.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.435785174369812, 'confidence': 0}
+File 24423_18.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.31390535831451416, 'confidence': 0}
+File 76213_18.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.41872236132621765, 'confidence': 0}
+File 89208_7.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.29736971855163574, 'confidence': 0}
+File 78106_25.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.4218733012676239, 'confidence': 0}
+File 20086_44.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.4481556713581085, 'confidence': 0}
+File 80431_19.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.37044283747673035, 'confidence': 0}
+File 84818_11.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.4127157926559448, 'confidence': 0}
+File 84818_135.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3689490854740143, 'confidence': 0}
+File 20086_100.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.39344748854637146, 'confidence': 0}
+File 79305_22.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.32233351469039917, 'confidence': 0}
+File 76213_29.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3243601322174072, 'confidence': 0}
+File 80685_35.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.2905161380767822, 'confidence': 0}
+File 87645_42.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.41310808062553406, 'confidence': 0}
+File 76221_32.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.431913286447525, 'confidence': 0}
+File 78705_18.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3476659655570984, 'confidence': 0}
+File 80820_36.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.32424136996269226, 'confidence': 0}
+File 80431_11.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.35659515857696533, 'confidence': 0}
+File 82092_26.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.36505451798439026, 'confidence': 0}
+File 91039_57.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3932822048664093, 'confidence': 0}
+File 24250_1.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.2540941536426544, 'confidence': 0}
+File 81387_29.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3760179579257965, 'confidence': 0}
+File 70362_2.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.36697298288345337, 'confidence': 0}
+File 81387_21.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3843536674976349, 'confidence': 0}
+File 64520_60.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.34665054082870483, 'confidence': 0}
+File 78705_18.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3476659655570984, 'confidence': 0}
+File 81336_5.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.33978649973869324, 'confidence': 0}
+File 86145_14.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3764486312866211, 'confidence': 0}
+File 80431_19.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.37044283747673035, 'confidence': 0}
+File 81387_122.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3973052501678467, 'confidence': 0}
+File 81387_63.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.451747328042984, 'confidence': 0}
+File 84818_68.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.34939876198768616, 'confidence': 0}
+File 81336_3.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3350147306919098, 'confidence': 0}
+File 76221_49.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.32356271147727966, 'confidence': 0}
+File 81387_19.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3385069966316223, 'confidence': 0}
+File 89208_17.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3198448717594147, 'confidence': 0}
+File 24424_14.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3742199242115021, 'confidence': 0}
+File 71900_34.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3152938783168793, 'confidence': 0}
+File 83931_23.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.32679060101509094, 'confidence': 0}
+File 81387_68.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.44812479615211487, 'confidence': 0}
+File 24424_19.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.30472084879875183, 'confidence': 0}
+File 68647_11.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.3379797339439392, 'confidence': 0}
+File 81336_32.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.4648720324039459, 'confidence': 0}
+File 20086_53.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.345691055059433, 'confidence': 0}
+File 64520_60.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.34665054082870483, 'confidence': 0}
+File 78106_3.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.46857109665870667, 'confidence': 0}
+File 81387_54.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.4739554226398468, 'confidence': 0}
+File 76221_11.wav evaluated. Results: {'result': 100.00000000000003, 'comet': 0.4265255033969879, 'confidence': 0}
+Median inference time: 0.018314838409423828
+Mean inference time: 0.020697055238016536
+sending incremental file list
+created directory /pfs/work7/workspace/scratch/ueojl-data-ssd/results-24219782
+
+sent 18 bytes  received 95 bytes  226.00 bytes/sec
+total size is 0  speedup is 0.00
+------------------------------------------------------------
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n520
+Job ID: 24219782
+Cluster: uc2
+User/Group: ueojl/stud
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 20
+CPU Utilized: 00:05:27
+CPU Efficiency: 6.12% of 01:29:00 core-walltime
+Job Wall-clock time: 00:04:27
+Memory Utilized: 5.27 GB
+Memory Efficiency: 59.96% of 8.79 GB

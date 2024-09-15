@@ -221,5 +221,1059 @@
             "as_corpus": true,
             "metric": "chrf"
         }
+    },
+    "seamless-m4t-v2-large_1726132766.7603164_chrf_best.csv": {
+        "qe-comet": {
+            "pearson": 0.5194772152825989,
+            "mae": 11.87913072250163,
+            "rmse": 14.5200751895553
+        },
+        "qe-loglik": {
+            "pearson": -0.0036792988650271572,
+            "mae": 77.67313805566225,
+            "rmse": 79.1249466824665
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.1,
+                        0.5,
+                        0.7
+                    ]
+                },
+                "speed_warp": {
+                    "speeds": [
+                        0.66,
+                        2.0
+                    ]
+                },
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            100,
+                            3000
+                        ]
+                    ]
+                }
+            },
+            "weights": {
+                "random_noise-0.001": 0.7,
+                "random_noise-0.005": 1.3,
+                "random_noise-0.007": 1.9,
+                "speed_warp-0.6": 0.6,
+                "speed_warp-0.7": 0.7,
+                "speed_warp-1.6": 0.7,
+                "speed_warp-1.7": 0.7,
+                "resampling-8000": 0.7,
+                "resampling-32000": 0.5
+            },
+            "as_corpus": false,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726133300.0229502_filter_only.csv": {
+        "qe-comet": {
+            "pearson": 0.3492140597796373,
+            "mae": 44.064866389297634,
+            "rmse": 46.19825340410254
+        },
+        "qe-loglik": {
+            "pearson": 0.1509381013877275,
+            "mae": 35.04924968113405,
+            "rmse": 38.10931701431663
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            100,
+                            1100
+                        ],
+                        [
+                            50,
+                            1000
+                        ],
+                        [
+                            500,
+                            3000
+                        ],
+                        [
+                            1000,
+                            7000
+                        ]
+                    ],
+                    "stop_cutoffs": [
+                        [
+                            2000,
+                            5000
+                        ],
+                        [
+                            200,
+                            1200
+                        ],
+                        [
+                            100,
+                            1000
+                        ],
+                        [
+                            500,
+                            5000
+                        ],
+                        [
+                            450,
+                            5500
+                        ],
+                        [
+                            550,
+                            4500
+                        ]
+                    ]
+                }
+            },
+            "weights": {
+                "frequency_filtering-pass(50, 200)": 1.5,
+                "frequency_filtering-pass(1000, 3000)": 0.7,
+                "frequency_filtering-stop(100, 6000)": -1.0,
+                "frequency_filtering-stop(50, 200)": 1.0
+            },
+            "as_corpus": true,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726142920.725836_chrf_best.csv": {
+        "qe-comet": {
+            "pearson": 0.04076277365075806,
+            "mae": 39.59534475140755,
+            "rmse": 43.01130248836748
+        },
+        "qe-loglik": {
+            "pearson": -0.40853393092519313,
+            "mae": 39.297642735308344,
+            "rmse": 41.16383194684088
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.3,
+                        0.4,
+                        0.35
+                    ]
+                },
+                "speed_warp": {
+                    "speeds": [
+                        0.66,
+                        2.0,
+                        2.1
+                    ]
+                },
+                "resampling": {
+                    "target_sample_rates": [
+                        24000,
+                        23000
+                    ]
+                }
+            },
+            "weights": {
+                "random_noise-0.3": 0.7,
+                "random_noise-0.4": 0.8,
+                "random_noise-0.35": 0.9,
+                "speed_warp-0.66": 0.6,
+                "speed_warp-2.0": 0.8,
+                "speed_warp-2.1": 0.6,
+                "resampling-24000": 0.8,
+                "resampling-23000": 0.9
+            },
+            "as_corpus": false,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726143504.6406083_filter_only.csv": {
+        "qe-comet": {
+            "pearson": 0.05248558811499411,
+            "mae": 38.731583591337305,
+            "rmse": 42.49607981588008
+        },
+        "qe-loglik": {
+            "pearson": -0.12682326775670172,
+            "mae": 40.84417062377862,
+            "rmse": 43.59552741644301
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            1000,
+                            7000
+                        ]
+                    ],
+                    "stop_cutoffs": [
+                        [
+                            200,
+                            1200
+                        ],
+                        [
+                            500,
+                            5000
+                        ],
+                        [
+                            450,
+                            5500
+                        ]
+                    ]
+                }
+            },
+            "weights": {
+                "frequency_filtering-pass(1000, 7000)": 1.5,
+                "frequency_filtering-stop(200, 1200)": 0.7,
+                "frequency_filtering-stop(500, 5000)": 1.0,
+                "frequency_filtering-stop(450, 5500)": 1.0
+            },
+            "as_corpus": false,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726144679.8317106_resample_only.csv": {
+        "qe-comet": {
+            "pearson": 0.43046947082178455,
+            "mae": 15.641285831627627,
+            "rmse": 20.516027633977348
+        },
+        "qe-loglik": {
+            "pearson": -0.2607669850713527,
+            "mae": 71.04030733080737,
+            "rmse": 73.90771462218821
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "resampling": {
+                    "target_sample_rates": [
+                        22000,
+                        23000,
+                        24000
+                    ]
+                }
+            },
+            "weights": {
+                "resampling-23000": 2.0,
+                "resampling-24000": 1.5,
+                "resampling-22000": 1.0
+            },
+            "as_corpus": false,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726146115.970137_warp_only.csv": {
+        "qe-comet": {
+            "pearson": -0.10246549752030729,
+            "mae": 45.9976690724636,
+            "rmse": 49.26715773677162
+        },
+        "qe-loglik": {
+            "pearson": -0.4090362022237982,
+            "mae": 32.895806457495304,
+            "rmse": 34.962338970248396
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "speed_warp": {
+                    "speeds": [
+                        0.66,
+                        2.0,
+                        2.1
+                    ]
+                }
+            },
+            "weights": {
+                "speed_warp-0.66": 0.8,
+                "speed_warp-2.1": 1.2,
+                "speed_warp-0.5": 0.5
+            },
+            "as_corpus": false,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726155264.5497274_chrf_best.csv": {
+        "qe-comet": {
+            "pearson": 0.14132419305215388,
+            "mae": 30.505498227297753,
+            "rmse": 34.63818049769058
+        },
+        "qe-loglik": {
+            "pearson": -0.3304072410911042,
+            "mae": 48.956617084636754,
+            "rmse": 50.95078346918476
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.1,
+                        0.3,
+                        0.4,
+                        0.35
+                    ]
+                },
+                "speed_warp": {
+                    "speeds": [
+                        0.66,
+                        0.7,
+                        1.9,
+                        2.0
+                    ]
+                },
+                "resampling": {
+                    "target_sample_rates": [
+                        24000,
+                        23000,
+                        25000
+                    ]
+                }
+            },
+            "weights": {
+                "random_noise-0.1": 1.5,
+                "random_noise-0.3": 0.7,
+                "random_noise-0.4": 0.8,
+                "random_noise-0.35": 0.9,
+                "speed_warp-0.66": 0.6,
+                "speed_warp-2.0": 0.8,
+                "speed_warp-1.9": 1.1,
+                "speed_warp-0.7": 1.1,
+                "resampling-24000": 0.8,
+                "resampling-23000": 0.9
+            },
+            "as_corpus": false,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726155926.8929026_filter_only.csv": {
+        "qe-comet": {
+            "pearson": 0.04645089259002191,
+            "mae": 34.042811370016636,
+            "rmse": 38.30170481281745
+        },
+        "qe-loglik": {
+            "pearson": -0.1798906135861619,
+            "mae": 45.6817505755368,
+            "rmse": 48.106418456013685
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            900,
+                            7000
+                        ],
+                        [
+                            100,
+                            1100
+                        ]
+                    ],
+                    "stop_cutoffs": [
+                        [
+                            250,
+                            1150
+                        ],
+                        [
+                            550,
+                            4500
+                        ],
+                        [
+                            500,
+                            5000
+                        ]
+                    ]
+                }
+            },
+            "weights": {
+                "frequency_filtering-pass(1000, 7000)": 1.5,
+                "frequency_filtering-pass(100, 1100)": 1.0,
+                "frequency_filtering-stop(200, 1200)": 0.7,
+                "frequency_filtering-stop(500, 5000)": 1.0,
+                "frequency_filtering-stop(450, 5500)": 1.0
+            },
+            "as_corpus": false,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726156615.3022294_noise_only.csv": {
+        "qe-comet": {
+            "pearson": -0.18471117222915398,
+            "mae": 42.52154506858076,
+            "rmse": 47.509485853251576
+        },
+        "qe-loglik": {
+            "pearson": -0.1609741026772516,
+            "mae": 37.209790531155704,
+            "rmse": 40.871455323667604
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.1,
+                        0.15,
+                        0.2,
+                        0.3,
+                        0.4,
+                        0.35
+                    ]
+                }
+            },
+            "weights": {
+                "random_noise-0.1": 1.2,
+                "random_noise-0.15": 1.0,
+                "random_noise-0.2": 0.5,
+                "random_noise-0.3": 0.8,
+                "random_noise-0.35": 0.9,
+                "random_noise-0.4": 0.8
+            },
+            "as_corpus": false,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726157323.4841774_resample_only.csv": {
+        "qe-comet": {
+            "pearson": 0.4050290495983708,
+            "mae": 16.157452947506805,
+            "rmse": 20.961220518037443
+        },
+        "qe-loglik": {
+            "pearson": -0.31445791318511584,
+            "mae": 69.84258639599544,
+            "rmse": 72.61282119558895
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "resampling": {
+                    "target_sample_rates": [
+                        21000,
+                        22000,
+                        23000,
+                        24000,
+                        25000
+                    ]
+                }
+            },
+            "weights": {
+                "resampling-23000": 2.0,
+                "resampling-24000": 1.8,
+                "resampling-22000": 0.9,
+                "resampling-21000": 0.7,
+                "resampling-25000": 1.9
+            },
+            "as_corpus": false,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726158943.8438258_warp_only.csv": {
+        "qe-comet": {
+            "pearson": 0.1413615837439216,
+            "mae": 34.83841544094342,
+            "rmse": 38.61928290359441
+        },
+        "qe-loglik": {
+            "pearson": -0.32678071043242196,
+            "mae": 44.17000721709534,
+            "rmse": 46.24320684492194
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "speed_warp": {
+                    "speeds": [
+                        0.66,
+                        0.7,
+                        1.9,
+                        2.0,
+                        2.1
+                    ]
+                }
+            },
+            "weights": {
+                "speed_warp-0.66": 0.6,
+                "speed_warp-2.1": 0.6,
+                "speed_warp-0.7": 1.1,
+                "speed_warp-1.9": 0.9,
+                "speed_warp-2.0": 0.8
+            },
+            "as_corpus": false,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726324699.5754478_chrf_best.csv": {
+        "qe-comet": {
+            "pearson": 0.14907290787797758,
+            "mae": 37.49894182623978,
+            "rmse": 40.3134236070014
+        },
+        "qe-loglik": {
+            "pearson": -0.2699469076356069,
+            "mae": 41.728107825460185,
+            "rmse": 43.43793692233886
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.1,
+                        0.5,
+                        0.7
+                    ]
+                },
+                "speed_warp": {
+                    "speeds": [
+                        0.66,
+                        2.0
+                    ]
+                },
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            100,
+                            3000
+                        ]
+                    ]
+                }
+            },
+            "weights": {},
+            "as_corpus": false,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726323952.1250236_chrf_best_corpus.csv": {
+        "qe-comet": {
+            "pearson": 0.43767530537053084,
+            "mae": 15.380933849884851,
+            "rmse": 19.730387138918992
+        },
+        "qe-loglik": {
+            "pearson": 0.18825926269442753,
+            "mae": 91.19633691094432,
+            "rmse": 92.148306278435
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.003,
+                        0.005,
+                        0.007,
+                        0.009,
+                        0.012
+                    ]
+                }
+            },
+            "weights": {},
+            "as_corpus": true,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726354268.210357_filter_only.csv": {
+        "qe-comet": {
+            "pearson": 0.3782313553878492,
+            "mae": 19.758169403327503,
+            "rmse": 26.0510060336552
+        },
+        "qe-loglik": {
+            "pearson": -0.1320343741629952,
+            "mae": 68.41839867806891,
+            "rmse": 73.0554166435842
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            900,
+                            7000
+                        ],
+                        [
+                            100,
+                            1100
+                        ]
+                    ],
+                    "stop_cutoffs": [
+                        [
+                            250,
+                            1150
+                        ],
+                        [
+                            550,
+                            4500
+                        ],
+                        [
+                            500,
+                            5000
+                        ]
+                    ]
+                }
+            },
+            "weights": {
+                "frequency_filtering-pass(1000, 7000)": 1.5,
+                "frequency_filtering-pass(100, 1100)": 1.0,
+                "frequency_filtering-stop(200, 1200)": 0.7,
+                "frequency_filtering-stop(500, 5000)": 1.0,
+                "frequency_filtering-stop(450, 5500)": 1.0
+            },
+            "as_corpus": true,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726355246.4912522_filter_optimal.csv": {
+        "qe-comet": {
+            "pearson": 0.3336799863415118,
+            "mae": 13.938110087421167,
+            "rmse": 19.595256695104872
+        },
+        "qe-loglik": {
+            "pearson": -0.04418580566974903,
+            "mae": 83.88094369893538,
+            "rmse": 85.71173285615708
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            100,
+                            1100
+                        ],
+                        [
+                            50,
+                            1000
+                        ],
+                        [
+                            500,
+                            3000
+                        ],
+                        [
+                            1000,
+                            7000
+                        ]
+                    ],
+                    "stop_cutoffs": [
+                        [
+                            2000,
+                            5000
+                        ],
+                        [
+                            200,
+                            1200
+                        ],
+                        [
+                            100,
+                            1000
+                        ],
+                        [
+                            500,
+                            5000
+                        ],
+                        [
+                            450,
+                            5500
+                        ],
+                        [
+                            550,
+                            4500
+                        ]
+                    ]
+                }
+            },
+            "weights": {},
+            "as_corpus": true,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726355724.1122217_noise_only.csv": {
+        "qe-comet": {
+            "pearson": -0.056138123171176633,
+            "mae": 49.18799737807118,
+            "rmse": 51.85729865812258
+        },
+        "qe-loglik": {
+            "pearson": 0.02415193520499365,
+            "mae": 29.92611869236051,
+            "rmse": 32.19194887165704
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.1,
+                        0.15,
+                        0.2,
+                        0.3,
+                        0.4,
+                        0.35
+                    ]
+                }
+            },
+            "weights": {
+                "random_noise-0.1": 1.2,
+                "random_noise-0.15": 1.0,
+                "random_noise-0.2": 0.5,
+                "random_noise-0.3": 0.8,
+                "random_noise-0.35": 0.9,
+                "random_noise-0.4": 0.8
+            },
+            "as_corpus": true,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726357640.7090487_warp_only.csv": {
+        "qe-comet": {
+            "pearson": 0.06274063930185024,
+            "mae": 33.388123066250145,
+            "rmse": 37.67618093471718
+        },
+        "qe-loglik": {
+            "pearson": -0.4656205479306359,
+            "mae": 46.08877818028522,
+            "rmse": 48.33773979145831
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "speed_warp": {
+                    "speeds": [
+                        0.66,
+                        0.7,
+                        1.9,
+                        2.0,
+                        2.1
+                    ]
+                }
+            },
+            "weights": {
+                "speed_warp-0.66": 0.6,
+                "speed_warp-2.1": 0.6,
+                "speed_warp-0.7": 1.1,
+                "speed_warp-1.9": 0.9,
+                "speed_warp-2.0": 0.8
+            },
+            "as_corpus": true,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726372344.5469625_chrf_best.csv": {
+        "qe-comet": {
+            "pearson": 0.4862953560227432,
+            "mae": 12.404937494385377,
+            "rmse": 16.71394740840671
+        },
+        "qe-loglik": {
+            "pearson": -0.09876731080966929,
+            "mae": 78.8041904055653,
+            "rmse": 80.81732439396364
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.1,
+                        0.3,
+                        0.4,
+                        0.35
+                    ]
+                },
+                "speed_warp": {
+                    "speeds": [
+                        0.66,
+                        0.7,
+                        1.9,
+                        2.0
+                    ]
+                },
+                "resampling": {
+                    "target_sample_rates": [
+                        24000,
+                        23000,
+                        25000
+                    ]
+                }
+            },
+            "weights": {
+                "random_noise-0.1": 1.5,
+                "random_noise-0.3": 0.7,
+                "random_noise-0.4": 0.8,
+                "random_noise-0.35": 0.9,
+                "speed_warp-0.66": 0.6,
+                "speed_warp-2.0": 0.8,
+                "speed_warp-1.9": 1.1,
+                "speed_warp-0.7": 1.1,
+                "resampling-24000": 0.8,
+                "resampling-23000": 0.9
+            },
+            "as_corpus": true,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726373079.6670794_filter_only.csv": {
+        "qe-comet": {
+            "pearson": 0.3977310434637155,
+            "mae": 14.303644636987793,
+            "rmse": 19.486584043558143
+        },
+        "qe-loglik": {
+            "pearson": -0.14907456108156042,
+            "mae": 79.21043353136503,
+            "rmse": 81.68644805494972
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            900,
+                            7000
+                        ],
+                        [
+                            100,
+                            1100
+                        ]
+                    ],
+                    "stop_cutoffs": [
+                        [
+                            250,
+                            1150
+                        ],
+                        [
+                            550,
+                            4500
+                        ],
+                        [
+                            500,
+                            5000
+                        ]
+                    ]
+                }
+            },
+            "weights": {
+                "frequency_filtering-pass(1000, 7000)": 1.5,
+                "frequency_filtering-pass(100, 1100)": 1.0,
+                "frequency_filtering-stop(200, 1200)": 0.7,
+                "frequency_filtering-stop(500, 5000)": 1.0,
+                "frequency_filtering-stop(450, 5500)": 1.0
+            },
+            "as_corpus": true,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726373787.9938471_noise_only.csv": {
+        "qe-comet": {
+            "pearson": 0.10094522675915463,
+            "mae": 22.54931965022937,
+            "rmse": 29.163940985933007
+        },
+        "qe-loglik": {
+            "pearson": 0.14056570719506223,
+            "mae": 64.89584679661124,
+            "rmse": 68.88698128399253
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.1,
+                        0.15,
+                        0.2,
+                        0.3,
+                        0.4,
+                        0.35
+                    ]
+                }
+            },
+            "weights": {
+                "random_noise-0.1": 1.2,
+                "random_noise-0.15": 1.0,
+                "random_noise-0.2": 0.5,
+                "random_noise-0.3": 0.8,
+                "random_noise-0.35": 0.9,
+                "random_noise-0.4": 0.8
+            },
+            "as_corpus": true,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726374527.5458062_resample_only.csv": {
+        "qe-comet": {
+            "pearson": 0.5985794650701663,
+            "mae": 12.009209946451218,
+            "rmse": 15.668463796393837
+        },
+        "qe-loglik": {
+            "pearson": -0.09670032705126926,
+            "mae": 78.89406439677855,
+            "rmse": 81.18800447665981
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "resampling": {
+                    "target_sample_rates": [
+                        21000,
+                        22000,
+                        23000,
+                        24000,
+                        25000
+                    ]
+                }
+            },
+            "weights": {
+                "resampling-23000": 2.0,
+                "resampling-24000": 1.8,
+                "resampling-22000": 0.9,
+                "resampling-21000": 0.7,
+                "resampling-25000": 1.9
+            },
+            "as_corpus": true,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726376154.8159828_warp_only.csv": {
+        "qe-comet": {
+            "pearson": 0.41243549963980697,
+            "mae": 14.970776570614886,
+            "rmse": 19.996201139064514
+        },
+        "qe-loglik": {
+            "pearson": -0.20186358659184112,
+            "mae": 75.00722349020194,
+            "rmse": 77.80435418334801
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "speed_warp": {
+                    "speeds": [
+                        0.66,
+                        0.7,
+                        1.9,
+                        2.0,
+                        2.1
+                    ]
+                }
+            },
+            "weights": {
+                "speed_warp-0.66": 0.6,
+                "speed_warp-2.1": 0.6,
+                "speed_warp-0.7": 1.1,
+                "speed_warp-1.9": 0.9,
+                "speed_warp-2.0": 0.8
+            },
+            "as_corpus": true,
+            "metric": "chrf"
+        }
     }
 }

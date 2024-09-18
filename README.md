@@ -21,6 +21,8 @@ You _may_ additionally configure
 - as_corpus [boolean]: whether you'd like pairwise or corpus-like translation similarity calculation
 - a path to a config file.
 
+If no configuration or specific instructions are given, the default configuration in `default_config.py` is used.
+
 ```
 python ./inference.py \
  --model facebook/seamless-m4t-v2-large \
@@ -28,6 +30,8 @@ python ./inference.py \
  --source_lang por \
  --target_lang deu
 ```
+
+If running on the bwUniCluster (v2), we provide the `test_inference.sh` job script, for which only user setup-specific pathing has to be additionally configured.
 
 ### Models
 
@@ -76,3 +80,22 @@ The perturbation specification is a dict/JSON object. It may contain the keys `r
 ```
 
 The weight keys are given as `<perturbation_key>-<spec>`. For the example above this results in `random_noise-0.1` and `frequency_filtering-pass(300,5000)` (among others).
+
+## Evaluation
+
+To run an evaluation manually, you only need a model key. However, you _may_ customize
+
+- source and target languages (make sure the keys match the models)
+- the configuration using a config JSON file
+- the result file destination and
+- the CSV input file.
+
+The provided evaluation script is built to process the IWSLT23 dataset. To evaluate on a different set, some changes regarding the assumptions made about the CSV's columns have to be made manually.
+
+```
+python evaluation.py \
+ --model "facebook/seamless-m4t-v2-large" \
+ --input ./eval_prep/IWSLT23_with_files.csv
+```
+
+If running on the bwUniCluster (v2), we provide the `eval_seamless.sh` and `eval_seamless_single.sh` job scripts, for which only user setup-specific pathing has to be additionally configured.

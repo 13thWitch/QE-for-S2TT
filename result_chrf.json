@@ -837,62 +837,6 @@
             "metric": "chrf"
         }
     },
-    "seamless-m4t-v2-large_1726354268.210357_filter_only.csv": {
-        "qe-comet": {
-            "pearson": 0.3782313553878492,
-            "mae": 19.758169403327503,
-            "rmse": 26.0510060336552
-        },
-        "qe-loglik": {
-            "pearson": -0.1320343741629952,
-            "mae": 68.41839867806891,
-            "rmse": 73.0554166435842
-        },
-        "loglik-comet": {
-            "pearson": 0.12058951996734392,
-            "mae": 78.07895258169893,
-            "rmse": 79.41471707146262
-        },
-        "config": {
-            "perturbation": {
-                "frequency_filtering": {
-                    "pass_cutoffs": [
-                        [
-                            900,
-                            7000
-                        ],
-                        [
-                            100,
-                            1100
-                        ]
-                    ],
-                    "stop_cutoffs": [
-                        [
-                            250,
-                            1150
-                        ],
-                        [
-                            550,
-                            4500
-                        ],
-                        [
-                            500,
-                            5000
-                        ]
-                    ]
-                }
-            },
-            "weights": {
-                "frequency_filtering-pass(1000, 7000)": 1.5,
-                "frequency_filtering-pass(100, 1100)": 1.0,
-                "frequency_filtering-stop(200, 1200)": 0.7,
-                "frequency_filtering-stop(500, 5000)": 1.0,
-                "frequency_filtering-stop(450, 5500)": 1.0
-            },
-            "as_corpus": true,
-            "metric": "chrf"
-        }
-    },
     "seamless-m4t-v2-large_1726355246.4912522_filter_optimal.csv": {
         "qe-comet": {
             "pearson": 0.3336799863415118,
@@ -959,86 +903,6 @@
                 }
             },
             "weights": {},
-            "as_corpus": true,
-            "metric": "chrf"
-        }
-    },
-    "seamless-m4t-v2-large_1726355724.1122217_noise_only.csv": {
-        "qe-comet": {
-            "pearson": -0.056138123171176633,
-            "mae": 49.18799737807118,
-            "rmse": 51.85729865812258
-        },
-        "qe-loglik": {
-            "pearson": 0.02415193520499365,
-            "mae": 29.92611869236051,
-            "rmse": 32.19194887165704
-        },
-        "loglik-comet": {
-            "pearson": 0.12058951996734392,
-            "mae": 78.07895258169893,
-            "rmse": 79.41471707146262
-        },
-        "config": {
-            "perturbation": {
-                "random_noise": {
-                    "std_ns": [
-                        0.1,
-                        0.15,
-                        0.2,
-                        0.3,
-                        0.4,
-                        0.35
-                    ]
-                }
-            },
-            "weights": {
-                "random_noise-0.1": 1.2,
-                "random_noise-0.15": 1.0,
-                "random_noise-0.2": 0.5,
-                "random_noise-0.3": 0.8,
-                "random_noise-0.35": 0.9,
-                "random_noise-0.4": 0.8
-            },
-            "as_corpus": true,
-            "metric": "chrf"
-        }
-    },
-    "seamless-m4t-v2-large_1726357640.7090487_warp_only.csv": {
-        "qe-comet": {
-            "pearson": 0.06274063930185024,
-            "mae": 33.388123066250145,
-            "rmse": 37.67618093471718
-        },
-        "qe-loglik": {
-            "pearson": -0.4656205479306359,
-            "mae": 46.08877818028522,
-            "rmse": 48.33773979145831
-        },
-        "loglik-comet": {
-            "pearson": 0.12058951996734392,
-            "mae": 78.07895258169893,
-            "rmse": 79.41471707146262
-        },
-        "config": {
-            "perturbation": {
-                "speed_warp": {
-                    "speeds": [
-                        0.66,
-                        0.7,
-                        1.9,
-                        2.0,
-                        2.1
-                    ]
-                }
-            },
-            "weights": {
-                "speed_warp-0.66": 0.6,
-                "speed_warp-2.1": 0.6,
-                "speed_warp-0.7": 1.1,
-                "speed_warp-1.9": 0.9,
-                "speed_warp-2.0": 0.8
-            },
             "as_corpus": true,
             "metric": "chrf"
         }
@@ -1274,6 +1138,169 @@
             },
             "as_corpus": true,
             "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726354268.210357_filter_only.csv_ablation": {
+        "qe-comet": {
+            "pearson": 0.3782313553878492,
+            "mae": 19.758169403327503,
+            "rmse": 26.0510060336552
+        },
+        "qe-loglik": {
+            "pearson": -0.1320343741629952,
+            "mae": 68.41839867806891,
+            "rmse": 73.0554166435842
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            100,
+                            3000
+                        ]
+                    ]
+                }
+            },
+            "weights": {},
+            "metric": "chrf",
+            "as_corpus": false
+        }
+    },
+    "seamless-m4t-v2-large_1726355246.4912522_filter_optimal.csv_ablation": {
+        "qe-comet": {
+            "pearson": 0.3336799863415118,
+            "mae": 13.938110087421167,
+            "rmse": 19.595256695104872
+        },
+        "qe-loglik": {
+            "pearson": -0.04418580566974903,
+            "mae": 83.88094369893538,
+            "rmse": 85.71173285615708
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            100,
+                            1100
+                        ],
+                        [
+                            50,
+                            1000
+                        ],
+                        [
+                            500,
+                            3000
+                        ],
+                        [
+                            1000,
+                            7000
+                        ]
+                    ],
+                    "stop_cutoffs": [
+                        [
+                            2000,
+                            5000
+                        ],
+                        [
+                            200,
+                            1200
+                        ],
+                        [
+                            100,
+                            1000
+                        ],
+                        [
+                            500,
+                            5000
+                        ],
+                        [
+                            450,
+                            5500
+                        ],
+                        [
+                            550,
+                            4500
+                        ]
+                    ]
+                }
+            },
+            "weights": {},
+            "as_corpus": true,
+            "metric": "chrf"
+        }
+    },
+    "seamless-m4t-v2-large_1726355724.1122217_noise_only.csv_ablation": {
+        "qe-comet": {
+            "pearson": -0.056138123171176633,
+            "mae": 49.18799737807118,
+            "rmse": 51.85729865812258
+        },
+        "qe-loglik": {
+            "pearson": 0.02415193520499365,
+            "mae": 29.92611869236051,
+            "rmse": 32.19194887165704
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.1,
+                        0.5,
+                        0.7
+                    ]
+                }
+            },
+            "weights": {},
+            "metric": "chrf",
+            "as_corpus": false
+        }
+    },
+    "seamless-m4t-v2-large_1726357640.7090487_warp_only.csv_ablation": {
+        "qe-comet": {
+            "pearson": 0.06274063930185024,
+            "mae": 33.388123066250145,
+            "rmse": 37.67618093471718
+        },
+        "qe-loglik": {
+            "pearson": -0.4656205479306359,
+            "mae": 46.08877818028522,
+            "rmse": 48.33773979145831
+        },
+        "loglik-comet": {
+            "pearson": 0.12058951996734392,
+            "mae": 78.07895258169893,
+            "rmse": 79.41471707146262
+        },
+        "config": {
+            "perturbation": {
+                "speed_warp": {
+                    "speeds": [
+                        0.66,
+                        2.0
+                    ]
+                }
+            },
+            "weights": {},
+            "metric": "chrf",
+            "as_corpus": false
         }
     }
 }

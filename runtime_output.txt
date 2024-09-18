@@ -1,0 +1,92 @@
+Starting job
+IWSLT23_with_files.csv
+configs_runtime/filter_best.json
+configs_runtime/noise_best.json
+configs_runtime/resample_best.json
+configs_runtime/warp_best.json
+Evaluating /scratch/slurm_tmpdir/job_24246774/configs_runtime/filter_best.json
+Instace for model key facebook/seamless-m4t-v2-large created.
+File 80431_44.wav evaluated. Results: {'result': 100.0, 'comet': 0.5596516728401184, 'confidence': tensor([0.0003])}
+File 81387_118.wav evaluated. Results: {'result': 73.73106163281173, 'comet': 0.5280234217643738, 'confidence': tensor([4.8719e-05])}
+File 91039_40.wav evaluated. Results: {'result': 83.16964461460475, 'comet': 0.8680016994476318, 'confidence': tensor([8.1551e-06])}
+File 91039_29.wav evaluated. Results: {'result': 72.0827834500435, 'comet': 0.8670226335525513, 'confidence': tensor([0.0008])}
+File 70362_13.wav evaluated. Results: {'result': 100.0, 'comet': 0.9478575587272644, 'confidence': tensor([1.6174e-05])}
+File 86145_14.wav evaluated. Results: {'result': 51.85056811991796, 'comet': 0.8839502334594727, 'confidence': tensor([1.9978e-05])}
+File 81387_123.wav evaluated. Results: {'result': 100.0, 'comet': 0.8308567404747009, 'confidence': tensor([3.2300e-08])}
+File 84145_46.wav evaluated. Results: {'result': 100.0, 'comet': 0.9179981350898743, 'confidence': tensor([4.3725e-05])}
+File 81387_59.wav evaluated. Results: {'result': 100.0, 'comet': 0.8825309872627258, 'confidence': tensor([0.0474])}
+Median inference time: 8.321959733963013
+Mean inference time: 9.359479851192898
+Execution Time: 200.6058864593506
+Done Evaluating /scratch/slurm_tmpdir/job_24246774/configs_runtime/filter_best.json
+Evaluating /scratch/slurm_tmpdir/job_24246774/configs_runtime/noise_best.json
+Instace for model key facebook/seamless-m4t-v2-large created.
+File 80431_44.wav evaluated. Results: {'result': 100.0, 'comet': 0.5596516728401184, 'confidence': tensor([0.0003])}
+File 81387_118.wav evaluated. Results: {'result': 59.678479021275, 'comet': 0.5280234217643738, 'confidence': tensor([4.8719e-05])}
+File 91039_40.wav evaluated. Results: {'result': 87.91309859990079, 'comet': 0.8680016994476318, 'confidence': tensor([8.1551e-06])}
+File 91039_29.wav evaluated. Results: {'result': 87.3905801787777, 'comet': 0.8670226335525513, 'confidence': tensor([0.0008])}
+File 70362_13.wav evaluated. Results: {'result': 100.0, 'comet': 0.9478575587272644, 'confidence': tensor([1.6174e-05])}
+File 86145_14.wav evaluated. Results: {'result': 100.0, 'comet': 0.8839502334594727, 'confidence': tensor([1.9978e-05])}
+File 81387_123.wav evaluated. Results: {'result': 100.0, 'comet': 0.8308567404747009, 'confidence': tensor([3.2300e-08])}
+File 84145_46.wav evaluated. Results: {'result': 100.0, 'comet': 0.9179981350898743, 'confidence': tensor([4.3725e-05])}
+File 81387_59.wav evaluated. Results: {'result': 100.0, 'comet': 0.8825309872627258, 'confidence': tensor([0.0474])}
+Median inference time: 3.285799980163574
+Mean inference time: 3.518641127480401
+Execution Time: 88.08759045600891
+Done Evaluating /scratch/slurm_tmpdir/job_24246774/configs_runtime/noise_best.json
+Evaluating /scratch/slurm_tmpdir/job_24246774/configs_runtime/resample_best.json
+Instace for model key facebook/seamless-m4t-v2-large created.
+File 80431_44.wav evaluated. Results: {'result': 100.0, 'comet': 0.5596516728401184, 'confidence': tensor([0.0003])}
+File 81387_118.wav evaluated. Results: {'result': 59.678479021275, 'comet': 0.5280234217643738, 'confidence': tensor([4.8719e-05])}
+File 91039_40.wav evaluated. Results: {'result': 91.85861352155115, 'comet': 0.8680016994476318, 'confidence': tensor([8.1551e-06])}
+File 91039_29.wav evaluated. Results: {'result': 100.0, 'comet': 0.8670226335525513, 'confidence': tensor([0.0008])}
+File 70362_13.wav evaluated. Results: {'result': 100.0, 'comet': 0.9478575587272644, 'confidence': tensor([1.6174e-05])}
+File 86145_14.wav evaluated. Results: {'result': 85.10598118957252, 'comet': 0.8839502334594727, 'confidence': tensor([1.9978e-05])}
+File 81387_123.wav evaluated. Results: {'result': 100.0, 'comet': 0.8308567404747009, 'confidence': tensor([3.2300e-08])}
+File 84145_46.wav evaluated. Results: {'result': 100.0, 'comet': 0.9179981350898743, 'confidence': tensor([4.3725e-05])}
+File 81387_59.wav evaluated. Results: {'result': 100.0, 'comet': 0.8825309872627258, 'confidence': tensor([0.0474])}
+Median inference time: 6.91140604019165
+Mean inference time: 6.830911291970147
+Execution Time: 117.7734546661377
+Done Evaluating /scratch/slurm_tmpdir/job_24246774/configs_runtime/resample_best.json
+Evaluating /scratch/slurm_tmpdir/job_24246774/configs_runtime/warp_best.json
+Instace for model key facebook/seamless-m4t-v2-large created.
+File 80431_44.wav evaluated. Results: {'result': 100.0, 'comet': 0.5596516728401184, 'confidence': tensor([0.0003])}
+File 81387_118.wav evaluated. Results: {'result': 100.0, 'comet': 0.5280234217643738, 'confidence': tensor([4.8719e-05])}
+File 91039_40.wav evaluated. Results: {'result': 91.85861352155115, 'comet': 0.8680016994476318, 'confidence': tensor([8.1551e-06])}
+File 91039_29.wav evaluated. Results: {'result': 87.3905801787777, 'comet': 0.8670226335525513, 'confidence': tensor([0.0008])}
+File 70362_13.wav evaluated. Results: {'result': 100.0, 'comet': 0.9478575587272644, 'confidence': tensor([1.6174e-05])}
+File 86145_14.wav evaluated. Results: {'result': 85.10598118957252, 'comet': 0.8839502334594727, 'confidence': tensor([1.9978e-05])}
+File 81387_123.wav evaluated. Results: {'result': 100.0, 'comet': 0.8308567404747009, 'confidence': tensor([3.2300e-08])}
+File 84145_46.wav evaluated. Results: {'result': 100.0, 'comet': 0.9179981350898743, 'confidence': tensor([4.3725e-05])}
+File 81387_59.wav evaluated. Results: {'result': 100.0, 'comet': 0.8825309872627258, 'confidence': tensor([0.0474])}
+Median inference time: 8.34578800201416
+Mean inference time: 8.10219939549764
+Execution Time: 128.98429584503174
+Done Evaluating /scratch/slurm_tmpdir/job_24246774/configs_runtime/warp_best.json
+sending incremental file list
+created directory /pfs/work7/workspace/scratch/ueojl-data-ssd/results-24246774
+results/
+results/IWSLT23_seamless-m4t-v2-large_1726558481.8707948_filter_best.csv
+results/IWSLT23_seamless-m4t-v2-large_1726558587.2703898_noise_best.csv
+results/IWSLT23_seamless-m4t-v2-large_1726558714.9030788_resample_best.csv
+results/IWSLT23_seamless-m4t-v2-large_1726558853.9773715_warp_best.csv
+
+sent 2,834 bytes  received 179 bytes  6,026.00 bytes/sec
+total size is 2,373  speedup is 0.79
+----------------------------------------------
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n514
+Job ID: 24246774
+Cluster: uc2
+User/Group: ueojl/stud
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 10
+CPU Utilized: 00:09:18
+CPU Efficiency: 7.17% of 02:09:40 core-walltime
+Job Wall-clock time: 00:12:58
+Memory Utilized: 9.69 GB
+Memory Efficiency: 49.61% of 19.53 GB

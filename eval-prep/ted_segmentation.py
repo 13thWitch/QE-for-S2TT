@@ -4,7 +4,7 @@ from pydub import AudioSegment
 
 # pathing
 path = os.path.dirname(os.path.realpath(__file__))
-save_path = os.path.join(path, "datasets", "IWSLT23.tst2023.en-de", "benchmark_IWSLT-23.en-de", "benchmark", "en-de", "tst2023", "segmented_wavs", "")
+save_path = os.path.join(path, ".." ,"datasets", "IWSLT23.tst2023.en-de", "benchmark_IWSLT-23.en-de", "benchmark", "en-de", "tst2023", "segmented_wavs", "")
 
 # loading a talk
 def load_audio(talk_num):

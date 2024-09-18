@@ -1,0 +1,10 @@
+{
+    "perturbation": {
+        "speed_warp": {
+                    "speeds": [0.66, 0.7, 1.9, 2.0, 2.1]
+                }
+    },
+    "weights": {},
+    "as_corpus": true,
+    "metric": "chrf"
+}

@@ -1,0 +1,12 @@
+{
+    "perturbation": {
+        "frequency_filtering": {
+            "pass_cutoffs": [
+                        [100, 3000]
+                    ]
+        }
+    },
+    "weights": {},
+    "metric": "chrf",
+    "as_corpus": false
+}

@@ -1,0 +1,16 @@
+{
+    "perturbation": {
+        "resampling": {
+            "target_sample_rates": [21000, 22000, 23000, 24000, 25000]
+        }
+    },
+    "weights": {
+        "resampling-23000": 2.0,
+        "resampling-24000": 1.8,
+        "resampling-22000": 0.9,
+        "resampling-21000": 0.7,
+        "resampling-25000": 1.9
+    },
+    "as_corpus": true,
+    "metric": "chrf"
+}

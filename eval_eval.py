@@ -5,15 +5,22 @@ import json
 import re
 import os
 
+"""
+This script takes a result file with columns audio_file, result, comet and confidence.
+It computes Pearson Correlation, MAE and RMSE for the data pairs (PB-QUESTT, COMET), (COMET, confidence) and (PB-QUESTT, confidence).
+If available, it loads the run configuration from the configs_best folder and 
+adds the computation results with the corresponding run configuration to the result log of the used metric.
+"""
+
 def extract_float_from_tensor_string(tensor_string):
     """
-    If extracting from txt (printed output), set if True to if False.
+    If confidence not returned as a tensor, e.g. when extracting from printed output txt, 
+    set if False to if True.
     """
     # Define the regular expression pattern to match the floating-point number
     if False:
         return float(tensor_string)
     pattern = r'tensor\(\[([-+]?\d*\.\d+|\d+\.?\d*[eE][-+]?\d+)\]\)'
-    # pattern = r'tensor\(([-+]?\d*\.\d*|\d+\.?\d*[eE][-+]?\d+)\)'
     # Search for the pattern in the input string
     match = re.search(pattern, tensor_string)
     
@@ -31,8 +38,11 @@ def get_file_name_from_path(path):
 
 def get_config(input_path):
     file_name = get_file_name_from_path(input_path)
-    config_file = "_".join(file_name.split("_")[-2:]).removesuffix(".csv") + ".json"
-    with open(os.path.join("configs", config_file), "r", encoding="utf-8") as f:
+    if "corpus" in input_path: 
+        config_file = "_".join(file_name.split("_")[-3:]).removesuffix(".csv") + ".json"
+    else:
+        config_file = "_".join(file_name.split("_")[-2:]).removesuffix(".csv") + ".json"
+    with open(os.path.join("configs_best", config_file), "r", encoding="utf-8") as f:
         return json.load(f)
     
 def evaluate(input_path):
@@ -98,7 +108,7 @@ if __name__ == "__main__":
     """
     This script takes a result file containing columns result, comet and confidence. 
     It calculates Pearson correlation, RMSE and MAE for (result, comet), (result, confidence) and (comet, confidence).
-    These values are saved to the metric-specific log, if available, else to the general log.
+    These values are saved to the metric-specific log, if available.
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--result_file", type=str)

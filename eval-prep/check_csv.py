@@ -2,6 +2,11 @@ import pandas as pd
 import math
 import os
 
+
+"""
+This script checks whether each specified audio file in the IWSLT23 csv file exists and is loadable.
+"""
+
 # pathing
 path = os.path.dirname(os.path.realpath(__file__))
 ted_path = os.path.join(path, "..\\datasets\\IWSLT23.tst2023.en-de\\benchmark_IWSLT-23.en-de\\benchmark\\en-de\\tst2023\\segmented_wavs")

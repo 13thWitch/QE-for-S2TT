@@ -1,0 +1,15 @@
+{
+    "perturbation": {
+        "random_noise": {
+            "std_ns": [
+                0.001,
+                0.003,
+                0.005,
+                0.007
+            ]
+        }
+    },
+    "weights": {},
+    "metric": "bleu",
+    "as_corpus": true
+}

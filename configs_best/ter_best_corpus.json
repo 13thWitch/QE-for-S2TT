@@ -1,0 +1,28 @@
+{
+            "perturbation": {
+                "random_noise": {
+                    "std_ns": [
+                        0.1,
+                        0.5,
+                        0.7
+                    ]
+                },
+                "speed_warp": {
+                    "speeds": [
+                        0.66,
+                        2.0
+                    ]
+                },
+                "frequency_filtering": {
+                    "pass_cutoffs": [
+                        [
+                            100,
+                            3000
+                        ]
+                    ]
+                }
+            },
+            "weights": {},
+            "as_corpus": true,
+            "metric": "ter"
+}

@@ -1,6 +1,6 @@
 # QE-for-S2TT
 
-This repository contains the implementation of an unsupervised, black-box method for Quality Estimation of Speech-to-Text Translation systems. It is perturbation based and uses prediction robustness under manipulation of the source audio as an indicator for quality.
+This repository contains the implementation of PB-QuESTT: an unsupervised, black-box method for Quality Estimation of Speech-to-Text Translation systems. It is perturbation based and uses prediction robustness under manipulation of the source audio as an indicator for quality.
 
 The `Perturbation.py` file contains an audio Perturbation framework which is independently usable. Find out more about it in the [Section about Perturbation](#audio-perturbation).
 
@@ -111,7 +111,7 @@ Our implemented Perturbator class can perform frequency band filtering, resampli
 - [pydub](https://github.com/jiaaro/pydub)
 - [numpy](https://numpy.org/)
 
-The specification of which exact perturbations should be performed has the same format as in QuESTT. More detailed instruction can be found in the [Section on Perturbation Specifiation](#perturbation-specification).
+The specification of which exact perturbations should be performed has the same format as in PB-QuESTT. More detailed instruction can be found in the [Section on Perturbation Specifiation](#perturbation-specification).
 
 _Original and pydub-trimmed audio_:
 
@@ -152,3 +152,8 @@ _Segment-wise filter and noise perturbation on segment 4_:
 &nbsp; &nbsp; &nbsp; &nbsp;
   <img alt="segment gaussian noise spectrogram" src="exhibition_data/segment_perturbed/seg-4_0.007.png" width="45%">
 </p>
+
+## Acknowledgements
+
+PB-QuESTT and its implementation in this repository are the product of a Bachelor Thesis Project at the AI4LT research group at the Karlsruhe Institute of Technology (KIT).
+We, the authors, acknowledge support by the state of Baden-Württemberg through bwHPC. Our experiments were performed on the bwUniCluster (v2).

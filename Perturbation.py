@@ -1,13 +1,29 @@
 import resampy
-import math
 import numpy as np
 from scipy.fft import fft, ifft
 from pydub.silence import detect_leading_silence
 from pydub import AudioSegment
 
 class Perturbator:
-
-    # TODO: implement. pay attention to modular perturbation styles for ablation tests later. add interface for token level perturb.
+    """
+    This class is an audio perturbation resource. It offers whole-audio, aas well as segment-level perturbations, if given a transcription.
+    Perturbations include resampling, warping, random noise addition, and frequency filtering.
+    @param config: dictionary of perturbation strategies and their parameters. Example: 
+    {
+        "resampling": {
+            "target_sample_rates": [8000, 16000, 32000]
+        },
+        "speed_warp": {
+            "speeds": [0.5, 1, 2]
+        },
+        "random_noise": {
+            "std_ns": [0.01, 0.05, 0.1]
+        },
+        "frequency_filtering": {
+            "pass_cutoffs": [(100, 200), (300, 400)],
+            "stop_cutoffs": [(500, 600), (700, 800)]
+    }
+    """
     def __init__(self, config) -> None:
         # TODO: reconsider transcription use: maybe do two big blocks of pertutbation, keep instructions the same, but add token-focus wrapper with corresponding audio split to one block
         self.instruction = dict(
@@ -76,11 +92,6 @@ class Perturbator:
             noise = np.random.normal(0, std_n, audio.shape[0])
             noisy = audio + noise
             result[str(std_n)] = noisy
-        return result
-
-    def spec_augment(self, audio, sample__rate):
-        # TODO: put speck_augment on crack
-        result = dict()
         return result
 
     def frequency_filtering(self, audio, sample_rate):
@@ -154,7 +165,8 @@ class Perturbator:
         @param transcription: string audio's transcribed speech
         @returns a dictionary of perturbation types and respective resulting audio. Keys are formatted as "seg-{segment_number}_{perturbation_strategy}"
         """
-        # TODO: allocate segment size based on word length/vowel count. 
+        # TODO: allocate segment size based on word length/phoneme count.
+        # Use nltk or similar to tokenize transcription? 
         # TODO: add character-language support list(u"这是一个句子")
         perturbations = dict()
         num_words = len(transcription.split())

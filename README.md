@@ -113,24 +113,42 @@ Our implemented Perturbator class can perform frequency band filtering, resampli
 
 The specification of which exact perturbations should be performed has the same format as in QuESTT. More detailed instruction can be found in the [Section on Perturbation Specifiation](#perturbation-specification).
 
-_Original audio_
-![Original audio](exhibition_data/original.png)
+_Original and pydub-trimmed audio_:
 
-_Trimmed using pydub_
-![Trimmed original audio](exhibition_data/original_trimmed.png)
+<p>
+  <img alt="original audio spectrogram" src="exhibition_data/original.png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="trimmed audio spectrogram" src="exhibition_data/original_trimmed.png" width="45%">
+</p>
 
-_Added Gaussian Noise_
-![Noised audio](exhibition_data/whole_perturbed/random_noise-0.007.png)
+_Warping at factors 0.5 and 2.0_:
 
-_Resampled to well below the audio's Nyquist rate_
-![Original audio](exhibition_data/whole_perturbed/resampling-4000.png)
+<p>
+  <img alt="warping at 0.5 spectrogram" src="exhibition_data/whole_perturbed/speed_warp-0.5.png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="warping at 2.0 spectrogram" src="exhibition_data/whole_perturbed/speed_warp-2.png" width="45%">
+</p>
 
-_Band pass filtered audio_
-![Original audio](<exhibition_data/whole_perturbed/frequency_filtering-pass(500,%203000).png>)
+_Added Gaussian noise and aliasing from resampling well below the Nyquist rate_:
 
-_Band stop filtered audio_
-![Original audio](<exhibition_data/whole_perturbed/frequency_filtering-stop(500,%203000).png>)
+<p>
+  <img alt="added gaussian noise spectrogram" src="exhibition_data/whole_perturbed/random_noise-0.007.png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="aliasing from heavy resampling spectrogram" src="exhibition_data/whole_perturbed/resampling-4000.png" width="45%">
+</p>
 
-_Segment-wise perturbation: Band pass filter on segment 4_
-_Band pass filtered audio_
-![Original audio](<exhibition_data/segment_perturbed/seg-4_pass(500,%203000).png>)
+_Band pass and band stop filtered audio_:
+
+<p>
+  <img alt="band pass spectrogram" src="exhibition_data/whole_perturbed/frequency_filtering-pass(500,%203000).png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="band stop spectrogram" src="exhibition_data/whole_perturbed/frequency_filtering-stop(500, 3000).png" width="45%">
+</p>
+
+_Segment-wise filter and noise perturbation on segment 4_:
+
+<p>
+  <img alt="segment pass filter spectrogram" src="exhibition_data/segment_perturbed/seg-4_pass(500, 3000).png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="segment gaussian noise spectrogram" src="exhibition_data/segment_perturbed/seg-4_0.007.png" width="45%">
+</p>

@@ -2,6 +2,8 @@
 
 This repository contains the implementation of an unsupervised, black-box method for Quality Estimation of Speech-to-Text Translation systems. It is perturbation based and uses prediction robustness under manipulation of the source audio as an indicator for quality.
 
+The `Perturbation.py` file contains an audio Perturbation framework which is independently usable. Find out more about it in the [Section about Perturbation](#audio-perturbation).
+
 ## Installation
 
 1. Set up a virtual environment including Python >= 3.11.
@@ -99,3 +101,36 @@ python evaluation.py \
 ```
 
 If running on the bwUniCluster (v2), we provide the `eval_seamless.sh` and `eval_seamless_single.sh` job scripts, for which only user setup-specific pathing has to be additionally configured.
+
+# Audio Perturbation
+
+Our implemented Perturbator class can perform frequency band filtering, resampling, warping and noising on any passed numpy audio. We use the following resources to perform the perturbations:
+
+- [resampy](https://github.com/bmcfee/resampy)
+- [scipy.fft](https://docs.scipy.org/doc/scipy/tutorial/fft.html)
+- [pydub](https://github.com/jiaaro/pydub)
+- [numpy](https://numpy.org/)
+
+The specification of which exact perturbations should be performed has the same format as in QuESTT. More detailed instruction can be found in the [Section on Perturbation Specifiation](#perturbation-specification).
+
+_Original audio_
+![Original audio](exhibition_data/original.png)
+
+_Trimmed using pydub_
+![Trimmed original audio](exhibition_data/original_trimmed.png)
+
+_Added Gaussian Noise_
+![Noised audio](exhibition_data/whole_perturbed/random_noise-0.007.png)
+
+_Resampled to well below the audio's Nyquist rate_
+![Original audio](exhibition_data/whole_perturbed/resampling-4000.png)
+
+_Band pass filtered audio_
+![Original audio](<exhibition_data/whole_perturbed/frequency_filtering-pass(500,%203000).png>)
+
+_Band stop filtered audio_
+![Original audio](<exhibition_data/whole_perturbed/frequency_filtering-stop(500,%203000).png>)
+
+_Segment-wise perturbation: Band pass filter on segment 4_
+_Band pass filtered audio_
+![Original audio](<exhibition_data/segment_perturbed/seg-4_pass(500,%203000).png>)
